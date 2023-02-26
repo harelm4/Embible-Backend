@@ -8,6 +8,12 @@ from src.model.model import Model
 
 
 def calculate_hit_at_k(k: int, model: Model) -> float:
+    """
+    calculating hit at k for a model based on test set
+    :param k: param of hit at k
+    :param model: model to evaluate
+    :return: hit@k score
+    """
     with open('../../data/test_v2.json', 'r') as r:
         test_data = json.load(r)
     hit_at_ks = []
@@ -25,11 +31,13 @@ def calculate_hit_at_k(k: int, model: Model) -> float:
         print(list_of_preds)
         print(real_values)
         hit_at_ks.append(_hit_at_k(list_of_preds, [x for x in real_values if x != '']))
-    print('===res===')
-    print(sum(hit_at_ks) / len(hit_at_ks))
+    return (sum(hit_at_ks) / len(hit_at_ks))
 
 
-"""
+
+def _hit_at_k(predictions, real_values):
+    """
+    private function to calculate hit@k
     real_values-list of words/characters
     predictions-list of lists while each list contains k words/characters
     example:
@@ -37,8 +45,7 @@ def calculate_hit_at_k(k: int, model: Model) -> float:
     real_values=[שלום,ישראל]
     predictions=[[ישראל,יעקב],[חלום,ביטחון]]
     return-> 0.5
-"""
-def _hit_at_k(predictions, real_values):
+    """
     count_mone, count_mechane = 0, 0
     for i, word in enumerate(real_values):
         if word in predictions[i]:
@@ -47,3 +54,7 @@ def _hit_at_k(predictions, real_values):
     if count_mechane == 0:
         return 0
     return count_mone / count_mechane
+
+
+login(config.configs['hf_token'])
+calculate_hit_at_k(5, Ensamble())
