@@ -1,7 +1,7 @@
 from flask import Flask, request,jsonify
 from flask_cors import CORS
 import config
-from src.model.ensamble import Ensamble
+from src.model.ensemble import Ensemble
 from huggingface_hub import login
 
 
@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 login(config.configs['hf_token'])
 print('initializing ensemble models')
-ens=Ensamble()
+ens=Ensemble()
 print('starting flask')
 @app.route("/calc",methods=['GET'])
 def calc():

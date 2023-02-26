@@ -1,7 +1,7 @@
 import json
 
 import config
-from src.model.ensamble import Ensamble
+from src.model.ensemble import Ensemble
 from huggingface_hub import login
 
 from src.model.model import Model
@@ -57,4 +57,4 @@ def _hit_at_k(predictions, real_values):
 
 
 login(config.configs['hf_token'])
-calculate_hit_at_k(5, Ensamble())
+calculate_hit_at_k(5, Ensemble())

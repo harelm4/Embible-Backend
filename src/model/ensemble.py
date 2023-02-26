@@ -10,7 +10,7 @@ from src.model.standard_model import StandardModel
 from src.utils.strings import StringUtils
 
 
-class Ensamble(Model):
+class Ensemble(Model):
 
     def __init__(self):
         self.word_model=StandardModel(config.configs['word_model_path'])
