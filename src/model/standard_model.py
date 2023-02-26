@@ -15,8 +15,7 @@ class StandardModel(Model):
         preds = self._get_predictions(text)
 
         # split to parts so we can turn these parts to list of {'text': 'part', 'predictions': [...]}
-        splited_text=re.split('(\?)',text)
-        splited_text=[i for i in splited_text if i != '']
+        splited_text=StringUtils.split_text(text)
 
         res=[]
         pred_index=0

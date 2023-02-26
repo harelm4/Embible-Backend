@@ -17,7 +17,7 @@ class SequentialModel(Model):
         if '?' not in text:
             return [TextPart(text, None)]
         preds=self._predict_all(mlm, text)
-        splited_text=list(filter(lambda x:x!='',re.split('(\?)',text)))
+        splited_text=StringUtils.split_text(text)
 
         res=[]
         pres_index=0
