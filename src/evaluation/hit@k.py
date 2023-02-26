@@ -1,10 +1,8 @@
 
 import json
-import time
 
-import pandas as pd
 import config
-from src.ensamble import Ensamble
+from src.model.ensamble import Ensamble
 from huggingface_hub import login
 
 
@@ -24,14 +22,16 @@ def hit_at_k(predictions,real_values):
         if word in predictions[i]:
             count_mone+=1
         count_mechane+=1
+    if count_mechane==0 :
+        return 0
     return count_mone/count_mechane
 
 
 login(config.configs['hf_token'])
 ens=Ensamble()
-with open('test.json','r') as r:
+with open('../../data/test_v2.json', 'r') as r:
     test_data=json.load(r)
-
+hit_at_ks=[]
 for entry in test_data:
     print(entry)
     real_values=entry['missing'].values()
@@ -44,5 +44,7 @@ for entry in test_data:
             preds.append(pred.value)
         list_of_preds.append(preds)
     print(list_of_preds)
-    print(hit_at_k(list_of_preds,real_values))
-    break
+    print(real_values)
+    hit_at_ks.append(hit_at_k(list_of_preds,[x for x in real_values if x!='']))
+print('===res===')
+print(sum(hit_at_ks)/len(hit_at_ks))

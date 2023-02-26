@@ -1,7 +1,7 @@
 from flask import Flask, request,jsonify
 from flask_cors import CORS
 import config
-from src.ensamble import Ensamble
+from src.model.ensamble import Ensamble
 from huggingface_hub import login
 
 

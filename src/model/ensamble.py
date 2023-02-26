@@ -7,7 +7,7 @@ from src.classes.ensemble_result import EnsembleResult
 from src.model.model import Model
 from src.model.sequential_model import SequentialModel
 from src.model.standard_model import StandardModel
-from src.strings import StringUtils
+from src.utils.strings import StringUtils
 
 
 class Ensamble(Model):

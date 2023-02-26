@@ -2,7 +2,7 @@ import time
 
 import pandas as pd
 import config
-from src.ensamble import Ensamble
+from src.model.ensamble import Ensamble
 from huggingface_hub import login
 
 login(config.configs['hf_token'])

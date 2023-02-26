@@ -1,11 +1,9 @@
-import re
 import torch
-from transformers import pipeline, AutoTokenizer, AutoModelForMaskedLM
 
 from src.classes.prediction import Prediction
 from src.classes.text_part import TextPart
 from src.model.model import Model
-from src.strings import StringUtils
+from src.utils.strings import StringUtils
 
 class StandardModel(Model):
     def predict(self,text:str, min_p : float =0.01):

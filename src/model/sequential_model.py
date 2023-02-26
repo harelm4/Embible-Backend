@@ -1,4 +1,3 @@
-import re
 from typing import List
 
 import pandas as pd
@@ -7,7 +6,7 @@ from transformers import pipeline
 from src.classes.prediction import Prediction
 from src.classes.text_part import TextPart
 from src.model.model import Model
-from src.strings import StringUtils
+from src.utils.strings import StringUtils
 
 
 class SequentialModel(Model):
