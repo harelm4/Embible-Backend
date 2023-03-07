@@ -32,7 +32,6 @@ class SequentialModel(Model):
         return res
 
     def _predict_all(self,mlm, txt):
-
         count = txt.count('?')
         input_text = StringUtils.insert_masks(txt)
         all_preds = []
