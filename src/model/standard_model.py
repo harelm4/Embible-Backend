@@ -14,7 +14,7 @@ class StandardModel(Model):
 
         # split to parts so we can turn these parts to list of {'text': 'part', 'predictions': [...]}
         splited_text=StringUtils.split_text(text)
-
+        #
         res=[]
         pred_index=0
         for i,part in enumerate(splited_text):
