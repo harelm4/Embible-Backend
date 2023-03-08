@@ -40,35 +40,37 @@ class Ensemble(Model):
 
         return EnsembleResult(list(filter(lambda x: x != None, res)))
 
-    def _get_pred(self, pred_index: int):
+    def _get_pred(self, pred_index: int) -> List[TextPart]:
+        """
+        :param pred_index: index of prediction
+        :return:  the prediction at a specific index
+        """
         if (len(self.last_word_model_preds) <= pred_index):
             return
         # handle extreme points
         if '?' not in self.last_word_model_preds[pred_index].text:
             return self.last_word_model_preds[pred_index]
 
-        before, after = self._get_before_after(pred_index)
-        return self._get_pred_by_type(before, after, pred_index)
+        return self._get_pred_by_type(pred_index)
 
-    def _get_before_after(self, pred_index: int):
-        if pred_index == 0:
-            before = TextPart(' ', None)
-        else:
-            before = self.last_word_model_preds[pred_index - 1]
-        if pred_index == len(self.last_word_model_preds) - 1:
-            after = TextPart(' ', None)
-        else:
-            after = self.last_word_model_preds[pred_index + 1]
-
-        return before, after
-
-    def _get_pred_by_type(self, before: TextPart, after: TextPart, pred_index: int) -> TextPart:
+    def _get_pred_by_type(self, pred_index: int) -> TextPart:
+        """
+        decides what kind is the part to predict (word,charecter,...) and returns the corelated model result
+        you could say that in this function , all the ensemble magic happens
+        :param pred_index: index of prediction
+        :return: the correlated models TextPart with the models prediction
+        """
         if self._is_index_starts_a_word(pred_index):
             return self._get_word_prediction_at_index(pred_index)
         else:
             return self._get_char_or_subword_prediction_at_index(pred_index)
 
     def _get_word_prediction_at_index(self, index: int) -> TextPart:
+        """
+        get prediction of word model at index
+        :param index: index of prediction
+        :return: TextPart containing the predictions from the word model
+        """
         preds = self.last_word_model_preds[index].predictions
         res_preds = []
         word_len = self._get_this_word_length(index, self.last_word_model_preds)
@@ -80,7 +82,12 @@ class Ensemble(Model):
             res_preds = self._get_pred_sequentially_at_index(index, word_len)
         return TextPart('?', res_preds)
 
-    def _get_char_or_subword_prediction_at_index(self, pred_index):
+    def _get_char_or_subword_prediction_at_index(self, pred_index) -> TextPart:
+        """
+        get prediction of char model at index for subwords and chars (chars are subcase of subword)
+        :param index: index of prediction
+        :return: TextPart containing the predictions from the char model
+        """
         subword_len = 0
         x = len(self.splited_text[pred_index:])
         for c in self.splited_text[pred_index:]:
@@ -100,6 +107,12 @@ class Ensemble(Model):
         return count
 
     def _get_pred_sequentially_at_index(self, index: int, word_len: int) -> List[Prediction]:
+        """
+        use this function to predict sequentially the subword case
+        :param index: the index of the prediction
+        :param word_len: length of the prediction text the function should return
+        :return:
+        """
         preds = [pred.predictions[0] for pred in self.last_char_model_sequential_preds[index:index + word_len]
                  if pred.predictions != None and pred.predictions != []]
         if preds == []:
@@ -114,6 +127,11 @@ class Ensemble(Model):
         return [Prediction(res_txt, round(avg_score, 3))]
 
     def _is_index_starts_a_word(self, pred_index: int) -> bool:
+        """
+        returns true if the prediction at index is a word
+        :param pred_index: pred index
+        :return: boolean
+        """
         for i in range(pred_index, len(self.splited_text)):
             if self.splited_text[i] == ' ':
                 break
