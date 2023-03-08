@@ -1,4 +1,5 @@
 import json
+import sys
 
 import config
 from src.model.ensemble import Ensemble
@@ -17,8 +18,8 @@ def calculate_hit_at_k(k: int, model: Model) -> float:
     with open('../../data/test_v2.json', 'r') as r:
         test_data = json.load(r)
     hit_at_ks = []
-    for entry in test_data:
-        print(entry)
+    to_print=''
+    for entry_idx,entry in enumerate(test_data):
         real_values = entry['missing'].values()
         predictions = model.predict(entry['text']).get_only_k_predictions(k).lst  # list of text parts
         predictions = [x.predictions for x in predictions]  # list of lists of predicion objects
@@ -28,8 +29,14 @@ def calculate_hit_at_k(k: int, model: Model) -> float:
             for pred in l:
                 preds.append(pred.value)
             list_of_preds.append(preds)
-        print(list_of_preds)
-        print(real_values)
+
+        # === print loading state ===
+        for c in to_print:
+            sys.stdout.write('\b')
+        to_print=f'{entry_idx+1}/{len(test_data)}'
+        sys.stdout.write(to_print)
+        sys.stdout.flush()
+        #====
         hit_at_ks.append(_hit_at_k(list_of_preds, [x for x in real_values if x != '']))
     return (sum(hit_at_ks) / len(hit_at_ks))
 
@@ -57,4 +64,4 @@ def _hit_at_k(predictions, real_values):
 
 
 login(config.configs['hf_token'])
-calculate_hit_at_k(5, Ensemble())
+print(calculate_hit_at_k(5, Ensemble()))
