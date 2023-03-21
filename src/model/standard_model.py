@@ -1,14 +1,15 @@
 import torch
 
+from src.classes.model_result import ModelResult
 from src.classes.prediction import Prediction
 from src.classes.text_part import TextPart
 from src.model.model import Model
 from src.utils.strings import StringUtils
 
 class StandardModel(Model):
-    def predict(self,text:str, min_p : float =0.01):
+    def predict(self,text:str, min_p : float =0.01) -> ModelResult:
         if '?' not in text:
-            return [TextPart(text,None)]
+            return ModelResult([TextPart(text,None)])
         # predict
         preds = self._get_predictions(text)
 
@@ -24,7 +25,7 @@ class StandardModel(Model):
                 pred_index+=1
             res.append(next_pred)
 
-        return res
+        return ModelResult(res)
 
     def _get_predictions(self,text):
         text=StringUtils.insert_masks(text)

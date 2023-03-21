@@ -3,7 +3,7 @@ from typing import List
 import config
 from src.classes.prediction import Prediction
 from src.classes.text_part import TextPart
-from src.classes.ensemble_result import EnsembleResult
+from src.classes.model_result import ModelResult
 from src.model.model import Model
 from src.model.sequential_model import SequentialModel
 from src.model.standard_model import StandardModel
@@ -16,7 +16,7 @@ class Ensemble(Model):
         self.word_model = StandardModel(config.configs['word_model_path'])
         self.sequential_char_model = SequentialModel(config.configs['char_model_path'])
 
-    def predict(self, text: str, min_p=0.1) -> EnsembleResult:
+    def predict(self, text: str, min_p=0.1) -> ModelResult:
         """
         main function of this class, genetates predictions
         :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
@@ -38,7 +38,7 @@ class Ensemble(Model):
                 res.append(self._get_pred(self.pred_index))
             self.pred_index += 1
 
-        return EnsembleResult(list(filter(lambda x: x != None, res)))
+        return ModelResult(list(filter(lambda x: x != None, res)))
 
     def _get_pred(self, pred_index: int) -> List[TextPart]:
         """

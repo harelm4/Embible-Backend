@@ -3,6 +3,7 @@ from typing import List
 
 from transformers import AutoModelForMaskedLM, AutoTokenizer
 
+from src.classes.model_result import ModelResult
 from src.classes.text_part import TextPart
 
 
@@ -12,7 +13,7 @@ class Model(ABC):
         self.model=AutoModelForMaskedLM.from_pretrained(model_path)
         self.tokenizer=AutoTokenizer.from_pretrained(model_path)
 
-    def predict(self,text:str,min_p:float)->List[TextPart]:
+    def predict(self,text:str,min_p:float)->ModelResult:
         """
         the main function of the model class.
         call this function to get prediction of a text with a missing parts.

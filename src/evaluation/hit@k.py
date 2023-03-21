@@ -2,10 +2,12 @@ import json
 import sys
 
 import config
+from src.classes.model_result import ModelResult
 from src.model.ensemble import Ensemble
 from huggingface_hub import login
 
 from src.model.model import Model
+from src.model.standard_model import StandardModel
 
 
 def calculate_hit_at_k(k: int, model: Model) -> float:
@@ -38,6 +40,7 @@ def calculate_hit_at_k(k: int, model: Model) -> float:
         sys.stdout.flush()
         #====
         hit_at_ks.append(_hit_at_k(list_of_preds, [x for x in real_values if x != '']))
+    sys.stdout.write('\n')
     return (sum(hit_at_ks) / len(hit_at_ks))
 
 
@@ -64,4 +67,6 @@ def _hit_at_k(predictions, real_values):
 
 
 login(config.configs['hf_token'])
+model_name=config.configs['char_model_path']
+print(f'==={model_name}===')
 print(calculate_hit_at_k(5, Ensemble()))
