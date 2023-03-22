@@ -2,6 +2,7 @@ from typing import List
 
 import config
 from src.classes.prediction import Prediction
+from src.classes.returning_thread import ThreadWithReturnValue
 from src.classes.text_part import TextPart
 from src.classes.model_result import ModelResult
 from src.model.model import Model
@@ -14,7 +15,7 @@ class Ensemble(Model):
 
     def __init__(self):
         self.word_model = StandardModel(config.configs['word_model_path'])
-        self.sequential_char_model = SequentialModel(config.configs['char_model_path'])
+        self.sequential_char_model = StandardModel(config.configs['char_model_path'])
 
     def predict(self, text: str, min_p=0.1) -> ModelResult:
         """
