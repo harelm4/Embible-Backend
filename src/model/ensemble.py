@@ -1,3 +1,4 @@
+import sys
 from typing import List
 
 import config
@@ -13,7 +14,8 @@ from src.utils.strings import StringUtils
 
 class Ensemble(Model):
 
-    def __init__(self):
+    def __init__(self,max_word_len:int=sys.maxsize):
+        self.max_word_len=max_word_len
         self.word_model = StandardModel(config.configs['word_model_path'])
         self.sequential_char_model = StandardModel(config.configs['char_model_path'])
 
@@ -61,7 +63,8 @@ class Ensemble(Model):
         :param pred_index: index of prediction
         :return: the correlated models TextPart with the models prediction
         """
-        if self._is_index_starts_a_word(pred_index):
+        if self._is_index_starts_a_word(pred_index)\
+                and self._get_this_word_length(pred_index,self.last_word_model_preds)<self.max_word_len:
             return self._get_word_prediction_at_index(pred_index)
         else:
             return self._get_char_or_subword_prediction_at_index(pred_index)
