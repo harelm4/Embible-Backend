@@ -17,8 +17,6 @@ def calculate_hit_at_k(k: int, model: Model,data:dict,max_records=sys.maxsize,pr
     to_print=''
     for entry_idx,entry in enumerate(data):
         real_values = entry['missing'].values()
-        if entry_idx==21:
-            x=1
         predictions = model.predict(entry['text']).get_only_k_predictions(k).lst  # list of text parts
         predictions = [x.predictions for x in predictions]  # list of lists of predicion objects
         list_of_preds = []
@@ -55,26 +53,29 @@ def _hit_at_k(predictions, real_values):
     predictions=[[ישראל,יעקב],[חלום,ביטחון]]
     return-> 0.5
     """
-    # if all(len(x) == 1 for x in real_values):
-    #     new_preds=[]
-    #     for pred_lst in predictions:
-    #         for pred in pred_lst:
-    #             new_preds.append([x for i,x in enumerate(pred)])
-    #
-    #     predictions=new_preds
+    if all(len(x) == 1 for x in real_values) and len(predictions)!=len(real_values):
+        new_preds=[]
+        for pred_lst in predictions:
+            index=0
+            for c in pred_lst[0]:
+                new_preds+=[x[index] for x in pred_lst]
+                index+=1
+        predictions=new_preds
 
     if len(predictions)==0:
         return 0
     count_mone, count_mechane = 0, 0
-    # try:
-    for i, word in enumerate(real_values):
-        if word in predictions[i]:
-            count_mone += 1
-        count_mechane += 1
-    if count_mechane == 0:
+    try:
+        for i, word in enumerate(real_values):
+            if word in predictions[i]:
+                count_mone += 1
+            count_mechane += 1
+        if count_mechane == 0:
+            return 0
+    except:
+        print('hit@k loop error!!!')
         return 0
-    # except:
-    #     x=1
+
     return count_mone / count_mechane
 
 def get_data_at_hit_at_k_test_format(file_path:str):

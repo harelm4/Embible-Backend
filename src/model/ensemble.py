@@ -18,6 +18,7 @@ class Ensemble(Model):
         self.max_word_len=max_word_len
         self.word_model = StandardModel(config.configs['word_model_path'])
         self.sequential_char_model = StandardModel(config.configs['char_model_path'])
+        self.model_path = 'Ensamble'
 
     def predict(self, text: str, min_p=0.1) -> ModelResult:
         """
@@ -76,6 +77,7 @@ class Ensemble(Model):
         :return: TextPart containing the predictions from the word model
         """
         preds = self.last_word_model_preds[index].predictions
+
         res_preds = []
         word_len = self._get_this_word_length(index, self.last_word_model_preds)
         for pred in preds:
@@ -84,6 +86,7 @@ class Ensemble(Model):
         if len(res_preds) == 0:
             # in case non of the predictions are the length of the word
             res_preds = self._get_pred_sequentially_at_index(index, word_len)
+
         return TextPart('?', res_preds)
 
     def _get_char_or_subword_prediction_at_index(self, pred_index) -> TextPart:
@@ -99,6 +102,7 @@ class Ensemble(Model):
                 break
             subword_len += 1
         res_preds = self._get_pred_sequentially_at_index(pred_index, subword_len)
+
         return TextPart('?', res_preds)
 
     def _get_this_word_length(self, index, preds):
@@ -121,6 +125,10 @@ class Ensemble(Model):
                  if pred.predictions != None and pred.predictions != []]
         if preds == []:
             return []
+
+        # insert spaces where ''
+        preds=[Prediction(' ',p.score) if p.value=='' else p for p in preds]
+
         res_txt = ''
         pred_score_sum = 0
         for pred in preds:
