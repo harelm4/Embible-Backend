@@ -20,7 +20,7 @@ class Ensemble(Model):
         self.sequential_char_model = StandardModel(config.configs['char_model_path'])
         self.model_path = 'Ensamble'
 
-    def predict(self, text: str, min_p=0.1) -> ModelResult:
+    def predict(self, text: str, min_p=0.1,space_prdictor=None) -> ModelResult:
         """
         main function of this class, genetates predictions
         :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
@@ -29,6 +29,8 @@ class Ensemble(Model):
         """
         self.last_word_model_preds = self.word_model.predict(text, min_p)
         self.last_char_model_sequential_preds = self.sequential_char_model.predict(text, min_p)
+        if space_prdictor:
+            text=space_prdictor.genText(self.last_char_model_sequential_preds,text)
 
         self.splited_text = StringUtils.split_text(text)
         res = []

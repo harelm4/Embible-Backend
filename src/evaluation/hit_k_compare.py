@@ -12,7 +12,7 @@ import pandas as pd
 import pywhatkit
 
 results = []
-epochs = [20, 50]
+epochs = [10,20, 50]
 data_masked = [15, 25, 30]
 k = 5
 
@@ -30,22 +30,24 @@ def hit_at_k_eval(model: Model, data: str, domain: str, mask_precent):
 
 
 login(config.configs['hf_token'])
+ensemble=Ensemble()
 for mask_precent in data_masked:
     word_token_file = f'../../data/Hit@K/masked words words tokens/masked_test_df_words_words_tokens_{mask_precent}_no_niqqud_new.json'
-    # char_token_file = f'../../data/Hit@K/masked words char tokens/masked_test_df_words_char_tokens_{mask_precent}_no_niqqud_new.json'
+    char_token_file = f'../../data/Hit@K/masked words char tokens/masked_test_df_words_char_tokens_{mask_precent}_no_niqqud_new.json'
     char_token_with_masked_spaces = \
         f'../../data/Hit@K/masked chars and subwords with masked spaces char tokens/masked_spaces_char_tokens_{mask_precent}_no_niqqud_new.json'
-    try:
-        hit_at_k_eval(Ensemble()
-                      , word_token_file
-                      , 'word'
-                      , mask_precent
-                      )
-    except Exception as e:
-        print(e)
+
+    # try:
+    #     hit_at_k_eval(ensemble
+    #                   , char_token_file
+    #                   , 'char'
+    #                   , mask_precent
+    #                   )
+    # except Exception as e:
+    #     print(e)
 
     try:
-        hit_at_k_eval(Ensemble()
+        hit_at_k_eval(ensemble
                       , char_token_with_masked_spaces
                       , 'char'
                       , mask_precent
