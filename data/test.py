@@ -5,6 +5,8 @@ import config
 from src.model.ensemble import Ensemble
 from huggingface_hub import login
 
+from src.space_predictor.Iterative_space_predictor import Iterative_space_predictor
+
 login(config.configs['hf_token'])
 ens=Ensemble()
 
@@ -16,7 +18,8 @@ for txt in data_list:
     print(f"========")
     print(txt)
     t0=time.time()
-    res = ens.predict(txt)
+    space_predictor=Iterative_space_predictor()
+    res = ens.predict(txt,space_predictor=space_predictor)
     t1 = time.time()
     t=t1-t0
     word_len_list.append(txt.count("?"))
