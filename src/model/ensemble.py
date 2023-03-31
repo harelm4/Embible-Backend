@@ -30,7 +30,7 @@ class Ensemble(Model):
         self.last_word_model_preds = self.word_model.predict(text, min_p)
         self.last_char_model_sequential_preds = self.sequential_char_model.predict(text, min_p)
         if space_predictor:
-            text=space_predictor.genText(self.last_char_model_sequential_preds,text)
+            text,self.last_char_model_sequential_preds=space_predictor.genText(self.last_char_model_sequential_preds,text)
 
         self.splited_text = StringUtils.split_text(text)
         res = []

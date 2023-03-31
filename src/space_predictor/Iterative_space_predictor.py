@@ -3,7 +3,7 @@ from src.model.model import Model
 from src.space_predictor.space_predictor import space_predictor
 
 class Iterative_space_predictor(space_predictor):
-    def genText(self,model:Model,text:str,threshold=0.1)->str:
+    def genText(self,model:Model,text:str,threshold=0.1)->(str,Model):
         """
         In this function we will predict al of the spaces in the text and put them in the text above certain threshold of certainty
         :param threshold: certain threshold of certainty
@@ -13,7 +13,9 @@ class Iterative_space_predictor(space_predictor):
         """
 
         index_in_text=0
-        for dict_of_predictions in model.lst:
+        time_of_spaces=0
+        new_model_lst=model.lst
+        for index,dict_of_predictions in enumerate(model.lst):
             if(dict_of_predictions.text!='?'):
                 index_in_text+=len(dict_of_predictions.text)
             else:
@@ -21,4 +23,7 @@ class Iterative_space_predictor(space_predictor):
                     if(prediction.score>threshold and prediction.value==""):
                         text=text[:index_in_text] + " " + text[index_in_text+1:]
                         index_in_text+=1
-        return text
+                        del new_model_lst[index-time_of_spaces]
+                        time_of_spaces+=1
+        model.lst=new_model_lst
+        return text,model
