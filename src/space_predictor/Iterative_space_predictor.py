@@ -1,7 +1,7 @@
 
 from src.model.model import Model
 from src.space_predictor.space_predictor import space_predictor
-
+import copy
 class Iterative_space_predictor(space_predictor):
     def genText(self,model:Model,text:str,threshold=0.1)->(str,Model):
         """
@@ -14,7 +14,7 @@ class Iterative_space_predictor(space_predictor):
 
         index_in_text=0
         time_of_spaces=0
-        new_model_lst=model.lst
+        new_model_lst=copy.deepcopy(model.lst)
         for index,dict_of_predictions in enumerate(model.lst):
             if(dict_of_predictions.text!='?'):
                 index_in_text+=len(dict_of_predictions.text)
@@ -23,7 +23,9 @@ class Iterative_space_predictor(space_predictor):
                     if(prediction.score>threshold and prediction.value==""):
                         text=text[:index_in_text] + " " + text[index_in_text+1:]
                         index_in_text+=1
-                        del new_model_lst[index-time_of_spaces]
+                        new_model_lst.pop(index-time_of_spaces)
                         time_of_spaces+=1
+
+
         model.lst=new_model_lst
         return text,model
