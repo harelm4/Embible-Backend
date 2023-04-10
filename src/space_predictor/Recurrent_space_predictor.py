@@ -21,3 +21,4 @@ from src.space_predictor.Iterative_space_predictor import Iterative_space_predic
 login(config.configs['hf_token'])
 r= Iterative_space_predictor().genText(StandardModel(f'Embible/mBert-20-epochs'),'???שש?')
 print(r)
+#
