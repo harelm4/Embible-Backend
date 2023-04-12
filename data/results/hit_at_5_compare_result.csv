@@ -1,0 +1,199 @@
+,k,model,hit@k,file,time,error
+0,1,Ensamble,0.1398064085447264,../../data/Hit@K/masked words char tokens/word_chars_15.json,3.2539700190226237,
+1,1,Embible/mBert-10-epochs,0.0267601246105919,../../data/Hit@K/masked words char tokens/word_chars_15.json,1.6857031464576722,
+2,1,Embible/mBert-10-epochs,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+3,1,Embible/distilBert-10-epochs,0.013925233644859814,../../data/Hit@K/masked words char tokens/word_chars_15.json,1.871351949373881,
+4,1,Embible/mBert-20-epochs,0.02442367601246106,../../data/Hit@K/masked words char tokens/word_chars_15.json,1.6210587779680887,
+5,1,Embible/tavbert-20-epochs,0.0,../../data/Hit@K/masked words char tokens/word_chars_15.json,1.2731184204419455,
+6,1,Embible/distilBert-20-epochs,0.03613707165109034,../../data/Hit@K/masked words char tokens/word_chars_15.json,1.4770923058191936,
+7,1,Embible/mBert-50-epochs,0.02738317757009346,../../data/Hit@K/masked words char tokens/word_chars_15.json,1.9844022591908772,
+8,1,Embible/mBert-50-epochs,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+9,1,Embible/distilBert-50-epochs,0.03196261682242991,../../data/Hit@K/masked words char tokens/word_chars_15.json,1.3766040841738383,
+10,1,Ensamble,0.4098627212753465,../../data/Hit@K/masked MIX char tokens/mix_5.json,3.4534544865290324,
+11,1,Embible/mBert-10-epochs,0.05793044905518057,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.7896342992782592,
+12,1,Embible/mBert-10-epochs,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+13,1,Embible/distilBert-10-epochs,0.0211104702743085,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.3693305611610413,
+14,1,Embible/mBert-20-epochs,0.051937144363764315,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.7202570716540018,
+15,1,Embible/tavbert-20-epochs,0.3666470851040227,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.582960351308187,
+16,1,Embible/distilBert-20-epochs,0.053932732446617115,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.533527175585429,
+17,1,Embible/mBert-50-epochs,0.05962684393684462,../../data/Hit@K/masked MIX char tokens/mix_5.json,2.052125799655914,
+18,1,Embible/mBert-50-epochs,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+19,1,Embible/distilBert-50-epochs,0.05111101980936096,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.3650655468304953,
+20,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+21,1,Embible/mBert-10-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+22,1,Embible/mBert-10-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+23,1,Embible/distilBert-10-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+24,1,Embible/mBert-20-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+25,1,Embible/tavbert-20-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+26,1,Embible/distilBert-20-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+27,1,Embible/mBert-50-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+28,1,Embible/mBert-50-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+29,1,Embible/distilBert-50-epochs,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+30,1,Ensamble,0.11785275990883473,../../data/Hit@K/masked words char tokens/word_chars_25.json,3.526696256796519,
+31,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 325260288 bytes.
+32,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+33,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+34,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+35,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+36,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+37,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+38,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+39,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+40,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 16940640 bytes.
+41,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+42,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+43,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+44,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+45,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+46,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+47,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+48,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+49,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+50,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json does not exist
+51,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+52,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+53,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+54,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+55,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+56,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+57,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+58,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+59,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+60,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 16940640 bytes.
+61,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+62,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+63,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+64,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+65,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+66,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+67,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+68,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+69,1,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+70,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 577536 bytes.
+71,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+72,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+73,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+74,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+75,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+76,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+77,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+78,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+79,1,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+80,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json does not exist
+81,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+82,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+83,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+84,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+85,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+86,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+87,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+88,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+89,1,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+90,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 16517124 bytes.
+91,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,
+92,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+93,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,
+94,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,
+95,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,
+96,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,
+97,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,
+98,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+99,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_15.json,,
+100,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 503808 bytes.
+101,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,
+102,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+103,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,
+104,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,
+105,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,
+106,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,
+107,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,
+108,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+109,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_5.json,,
+110,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json does not exist
+111,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,
+112,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+113,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,
+114,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,
+115,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,
+116,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,
+117,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,
+118,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+119,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3015_no_niqqud_new.json,,
+120,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 491520 bytes.
+121,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+122,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+123,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+124,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+125,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+126,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+127,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+128,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+129,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_25.json,,
+130,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+131,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+132,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+133,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+134,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+135,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+136,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+137,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+138,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+139,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_10.json,,
+140,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json does not exist
+141,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+142,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+143,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+144,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+145,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+146,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+147,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+148,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+149,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3025_no_niqqud_new.json,,
+150,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 16940640 bytes.
+151,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+152,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+153,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+154,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+155,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+156,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+157,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+158,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+159,5,Ensamble,,../../data/Hit@K/masked words char tokens/word_chars_30.json,,
+160,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,[enforce fail at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 577536 bytes.
+161,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+162,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+163,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+164,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+165,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+166,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+167,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+168,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+169,5,Ensamble,,../../data/Hit@K/masked MIX char tokens/mix_15.json,,
+170,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,File ../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json does not exist
+171,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+172,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,Embible/tavbert-10-epochs does not appear to have a file named config.json. Checkout 'https://huggingface.co/Embible/tavbert-10-epochs/main' for available files.
+173,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+174,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+175,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+176,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+177,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
+178,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,"Embible/tavbert-50-epochs is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`."
+179,5,Ensamble,,../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_3030_no_niqqud_new.json,,
