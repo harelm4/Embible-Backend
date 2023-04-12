@@ -41,7 +41,7 @@ def hit_at(k):
         word_file = f'../../data/Hit@K/masked words char tokens/word_chars_{mask_precent}.json'
         mix_file = f'../../data/Hit@K/masked MIX char tokens/mix_{data_masked2[i]}.json'
         char_file = \
-            f'../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_{mask_precent}_no_niqqud_new.json'
+            f'../../data/Hit@K/masked chars and subwords with masked spaces char tokens/chars_{mask_precent}.json'
         files = [word_file, mix_file, char_file]
         for file in files:
             try:
