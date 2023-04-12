@@ -2,7 +2,7 @@
 import sys
 import pandas as pd
 from src.model.model import Model
-
+from src.utils.strings import StringUtils
 
 
 def calculate_hit_at_k(k: int, model: Model,data:dict,max_records=sys.maxsize,print_progress=True) -> float:
@@ -15,8 +15,10 @@ def calculate_hit_at_k(k: int, model: Model,data:dict,max_records=sys.maxsize,pr
 
     hit_at_ks = []
     to_print=''
+    total_full_words=[]
     for entry_idx,entry in enumerate(data):
         real_values = entry['missing'].values()
+        total_full_words+=StringUtils.find_question_word_index(entry)
         predictions = model.predict(entry['text']).get_only_k_predictions(k).lst  # list of text parts
         predictions = [x.predictions for x in predictions]  # list of lists of predicion objects
         list_of_preds = []
@@ -38,8 +40,97 @@ def calculate_hit_at_k(k: int, model: Model,data:dict,max_records=sys.maxsize,pr
         if entry_idx==max_records:
             break
     sys.stdout.write('\n')
+    # print(total_full_words)
     return (sum(hit_at_ks) / len(hit_at_ks))
 
+
+def preprocess_text_for_words(entry):
+    words = entry.split()
+    output_words=[]
+    for i,word in enumerate(words):
+        if all(c == '?' for c in word):
+            output_words.append('?')
+        else:
+            output_words.append(word)
+
+    return ' '.join(output_words)
+
+
+def get_words_from_missing(missing_dict, list_of_indeces):
+    total_words={}
+    for i,tup in enumerate(list_of_indeces):
+        s=""
+        for j in range(tup[1]):
+            key=j+tup[0]
+            key=str(key)
+            s+=missing_dict[key]
+        total_words[i]=s
+    return total_words
+
+
+def get_predictions_for_words(predictions, word_indeces):
+    missing=[]
+    for x in predictions.lst:
+        if(x.predictions != None):
+            missing.append(x)
+    res=[]
+    for word_index in word_indeces:
+        res.append(missing[word_index])
+    return res
+
+
+def get_word_indeces(txt):
+    counter_of_qm=0
+    indeces=[]
+    for i,c in enumerate(txt):
+        if(c=="?"):
+            if(i>0 and i<len(txt)-1):
+                if(txt[i-1]==" " and txt[i+1]==" "):
+                    indeces.append(counter_of_qm)
+            elif(i==0 and txt[1]==" "):
+                    indeces.append(counter_of_qm)
+            elif(i==len(txt)-1 and txt[i-1]==" "):
+                    indeces.append(counter_of_qm)
+            counter_of_qm+=1
+    return indeces
+
+
+def calculate_word_hit_at_k(k: int, model: Model,data:dict,max_records=sys.maxsize,only_words=False) -> float:
+    """
+    calculating hit at k for a model based on test set
+    :param k: param of hit at k
+    :param model: model to evaluate
+    :return: hit@k score
+    """
+
+    hit_at_ks = []
+    total_full_words=[]
+    for entry_idx,entry in enumerate(data):
+        if(len(StringUtils.find_question_word_index(entry))==0):
+            continue
+        #lens of all masks of full words by their order
+        len_of_masks = [t[1] for t in StringUtils.find_question_word_index(entry)]
+        #dictionary of {index of masked word:word}
+        if(only_words):
+            word_dict = dict([(i, value) for i, value in enumerate(entry['missing'].values())])
+        else:
+            word_dict=get_words_from_missing(entry['missing'],StringUtils.find_question_word_index(entry))
+        #input text
+        txt=entry['text']
+        #input text after transform each sequence of ? to single ?
+        txt=preprocess_text_for_words(txt)
+        words_indeces=get_word_indeces(txt)
+        predictions = model.predict(txt)  # list of text parts
+        predictions_for_words = get_predictions_for_words(predictions,words_indeces)
+        list_of_k_words_per_prediction=[]
+        for index,list_of_predictions in enumerate(predictions_for_words):
+            len_of_mask=len_of_masks[index]
+            l=[pred.value for pred in list_of_predictions.predictions if len(pred.value)==len_of_mask]
+            list_of_k_words_per_prediction.append(l[:k])
+        hit_at_ks.append(_hit_at_k( list_of_k_words_per_prediction,word_dict.values()))
+        if entry_idx==max_records:
+            break
+    return (sum(hit_at_ks) / len(hit_at_ks))
 
 
 def _hit_at_k(predictions, real_values):
