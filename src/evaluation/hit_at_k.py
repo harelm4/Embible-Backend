@@ -164,8 +164,6 @@ def _hit_at_k(predictions, real_values):
         if count_mechane == 0:
             return 0
     except:
-        print(real_values)
-        print(predictions)
         print('hit@k loop error!!!')
         return 0
 

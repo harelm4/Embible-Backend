@@ -22,16 +22,21 @@ class StringUtils():
 
     @staticmethod
     def change_question_mark_in_text(text:str)->List[str]:
-            words = text.split()
-            output_words = []
-            lens_of_masked_words=[]
-            for word in words:
-                if '?' in word:
-                    output_words.append('?')
-                    lens_of_masked_words.append(len(word))
-                else:
-                    output_words.append(word)
-            return ' '.join(output_words),lens_of_masked_words
+        """
+        the function changes each word that contains ? to ?
+        :param text:
+        :return: new string
+        """
+        words = text.split()
+        output_words = []
+        lens_of_masked_words=[]
+        for word in words:
+            if '?' in word:
+                output_words.append('?')
+                lens_of_masked_words.append(len(word))
+            else:
+                output_words.append(word)
+        return ' '.join(output_words),lens_of_masked_words
 
     @staticmethod
     def find_question_word_index(s):
