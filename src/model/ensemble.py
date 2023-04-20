@@ -1,5 +1,6 @@
 import sys
 from typing import List
+from itertools import product
 
 import config
 from src.classes.prediction import Prediction
@@ -152,3 +153,34 @@ class Ensemble(Model):
             if self.splited_text[i] != '?':
                 return False
         return True
+    
+    
+    def cartesian_product(matrix):
+        """
+        Returns all possible combinations of characters based on the order of rows
+        in a matrix using a Cartesian product.
+
+        Args:
+            matrix: A list of lists containing characters.
+
+        Returns:
+            A list of strings containing all possible combinations of characters.
+        """
+        # Use the product function from itertools to get the Cartesian product of the rows
+        row_combinations = product(*matrix)
+        # Join each combination of characters into a single string
+        return [''.join(row) for row in row_combinations]
+
+    def set_known_values(dict_of_knowns,list_of_combinations):
+      """
+      gets dictionary of {index_in_masked_word->int:known_character->str}
+      and list of combinations (output of cartesian_product(matrix))
+      returns all the masked words with the anchored characters
+      """
+      list_of_combos_with_anchors=[]
+      for subword in list_of_combinations:
+        for k in dict_of_knowns:
+          subword=subword[:k]+dict_of_knowns[k]+subword[k:]
+        list_of_combos_with_anchors.append(subword)  
+      return list_of_combos_with_anchors
+    
