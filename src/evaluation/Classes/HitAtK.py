@@ -13,7 +13,7 @@ class HitAtK(ABC):
 
     def get_data_at_hit_at_k_test_format(self,file_path: str)->list:
         """
-        A function that coverts data from Eldar's format to the formerly used format
+        A function that coverts data from data foldr format to the formerly used format
         :param file_path: test file path
         :return: list in form of [{"text": "...", "missing": {...}}]
         """
