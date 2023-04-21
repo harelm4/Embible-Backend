@@ -19,7 +19,7 @@ class ModelResult:
     def get_only_predictions(self):
         return ModelResult([x for x in self.lst if x.text == '?'])
     def get_only_k_predictions(self,k):
-        return ModelResult([TextPart(x.text, x.predictions[0:k]) for x in self.lst if x.text == '?'])
+        return ModelResult([TextPart(x.text, sorted(x.predictions,key=lambda x:x.score,reverse=True)[:k]) for x in self.lst if x.text == '?'])
     def __str__(self):
         return str(self.get_ui_format())
 
