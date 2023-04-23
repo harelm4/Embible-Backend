@@ -40,13 +40,37 @@ class StringUtils():
 
     @staticmethod
     def find_question_word_index(s):
-        words = s['text'].split()  # split the string into words
+        words = s['text'].split()
         indeces=[]
         char_inex=0
         for i, word in enumerate(words):
             if all(c == '?' for c in word):
-                indeces.append((char_inex,len(word)))  # return the index of the first question word
+                indeces.append((char_inex,len(word)))
             char_inex+=len(word)+1
-        return indeces  # return -1 if no question word is found
+        return indeces
 
+    @staticmethod
+    def index_of_words_contains_question_mark(s):
+        words = s.split()
+        indeces=[]
+        for i, word in enumerate(words):
+            if any(c == '?' for c in word):
+                indeces.append((i,len(word)))
+        return indeces
 
+    @staticmethod
+    def get_known_chars_and_their_indeces(s):
+        '''
+        :param s: input text
+        :return: dict: {index_of_masked_word:[(index of char in word,char)]}
+        '''
+        words = s.split()
+        indeces = {}
+        for i, word in enumerate(words):
+            if any(c == '?' for c in word):
+                for j,c in enumerate(word):
+                    if(i in indeces.keys()):
+                        indeces[i]=[(j,c)]#j- index in word, c-the char itself
+                    else:
+                        indeces[i].append((j,c))
+        return indeces
