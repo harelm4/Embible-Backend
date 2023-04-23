@@ -8,6 +8,12 @@ from src.model.standard_model import StandardModel
 class CharModel(StandardModel):
 
     def predict(self, text: str, min_p: float = 0.01) -> ModelResult:
+        """
+        main function of this class, genetates predictions
+        :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
+        :param min_p: minimal value of prediction score
+        :return: charModelResult , an object encapsulating list of TextParts
+        """
         sm = StandardModel('Embible/tavbert-50-epochs')
         if '?' not in text:
             return ModelResult([TextPart(text, None)])
@@ -24,6 +30,12 @@ class CharModel(StandardModel):
         return ModelResult(list_of_preds)
 
     def fill_word_preds(self, text: str, preds: list) -> list:
+        """
+        this function fills in all the combinations of the predictions inside the text given
+        :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
+        :param preds: list of lists of predictions .example: [[א,ב],[כ,ר]]
+        :return: list of all the combinations of the predictions filled in the text
+        """
         placeholders = [i for i in range(len(text)) if text[i] == "?"]
         num_placeholders = len(placeholders)
         char_lists = [lst for lst in preds if lst]  # remove empty lists
@@ -41,6 +53,14 @@ class CharModel(StandardModel):
         return completions
 
     def get_predictions_dict(self, text: str, full_pred: list) -> dict:
+        """
+        this function generates a dictionary of words with sub masked as key and all the possible word predictions as
+        values
+        :param text: text from the user .example :  "אני או?ב שו??לד"
+        :param full_pred: list of all the combinations of the predictions filled in the text
+        :return: dictionary of words with sub masked as key and all the possible word predictions as
+        values .example : {'או?ב': ['אויב', 'אוהב', 'אוכב'], 'שו??לד': ['שובולד','שויתלד', 'שוקולד', 'שויבלד']}
+        """
         splitted_sent = text.split()
         q_mark_indexes = []
         pred_dict = {}
