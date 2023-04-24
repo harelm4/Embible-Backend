@@ -50,9 +50,11 @@ class EnsembleV2(Model):
             text, char_model_result = space_predictor.genText(char_model_result, text)
         word_model_result = self.word_model.predict(text)
         if len(char_model_result) != len(word_model_result):
+            print('word :', word_model_result)
+            print('chars :', char_model_result)
             raise Exception(
-                'there is something wrong with one of the models , the length of the predictions is not equal',
-                char_model_result, word_model_result)
+                'there is something wrong with one of the models , the length of the predictions is not equal'
+                )
 
         return self.ensemble_predictions(char_model_result, word_model_result, char_model_weight)
 
@@ -95,3 +97,4 @@ class EnsembleV2(Model):
                     res_preds.append(Prediction(char_pred.value, score))
 
         return TextPart('?', list(sorted(res_preds, key=lambda x: x.score, reverse=True)))
+
