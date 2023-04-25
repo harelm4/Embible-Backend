@@ -41,6 +41,7 @@ class CharModel(StandardModel):
         for word in range(len(splitted_sent)):
             next_pred = TextPart(splitted_sent[word], None)
             if '?' in splitted_sent[word]:
+                next_pred.text = '?'
                 num_of_q_marks = splitted_sent[word].count('?')
                 completions, scores = self.fill_word_preds(splitted_sent[word],
                                                            preds_only_lst[pred_index:pred_index + num_of_q_marks],
