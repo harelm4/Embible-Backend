@@ -1,6 +1,7 @@
 import itertools
 
 from src.classes.model_result import ModelResult
+from src.classes.prediction import Prediction
 from src.classes.text_part import TextPart
 from src.model.standard_model import StandardModel
 
@@ -14,11 +15,11 @@ class CharModel(StandardModel):
         :param min_p: minimal value of prediction score
         :return: charModelResult , an object encapsulating list of TextParts
         """
-        sm = StandardModel('Embible/tavbert-50-epochs')
         if '?' not in text:
             return ModelResult([TextPart(text, None)])
-        preds = sm.predict(text, min_p)
-        predictions = [x.predictions for x in preds]
+        preds_w = super(CharModel, self).predict(text)
+        pres_only = preds_w.get_only_predictions()
+        predictions = [x.predictions for x in preds_w]
         list_of_preds = []
         for l in predictions:
             if l == None:
@@ -27,9 +28,41 @@ class CharModel(StandardModel):
             for pred in l:
                 preds.append(pred.value)
             list_of_preds.append(preds)
-        return ModelResult(list_of_preds)
+        preds_only_lst = ModelResult(list_of_preds).lst
+        list_of_p = []
+        for i in range(len(preds_only_lst)):
+            p_lst = []
+            for j in range(len(preds_only_lst[i])):
+                p_lst.append(pres_only[i].predictions[j].score)
+            list_of_p.append(p_lst)
+        splitted_sent = text.split()
+        pred_index = 0
+        res = []
+        for word in range(len(splitted_sent)):
+            next_pred = TextPart(splitted_sent[word], None)
+            if '?' in splitted_sent[word]:
+                num_of_q_marks = splitted_sent[word].count('?')
+                completions, scores = self.fill_word_preds(splitted_sent[word],
+                                                           preds_only_lst[pred_index:pred_index + num_of_q_marks],
+                                                           list_of_p[pred_index:pred_index + num_of_q_marks])
+                next_pred.predictions = list(filter(lambda x: x.score >= min_p, self.merge_preds(completions, scores)))
+                pred_index += num_of_q_marks
+            res.append(next_pred)
+        return ModelResult(res)
 
-    def fill_word_preds(self, text: str, preds: list) -> list:
+    def merge_preds(self, preds: list, p_lst: list) -> list:
+        """
+        this function merges the predictions and the scores into a list of prediction class
+        :param p_lst: List of float scores .example [0.55,0.41,0.99,0.1]
+        :param preds: list of lists of predictions .example: [['א',ב','כ,'ר']]
+        :return: list of prediction class
+        """
+        merged_lst = []
+        for pred, score in zip(preds, p_lst):
+            merged_lst.append(Prediction(pred, score))
+        return merged_lst
+
+    def fill_word_preds(self, text: str, preds: list, p_lst: list) -> list:
         """
         this function fills in all the combinations of the predictions inside the text given
         :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
@@ -43,33 +76,15 @@ class CharModel(StandardModel):
             return []
 
         completions = []
-        for chars in itertools.product(*char_lists):
+        scores = []
+        for chars, score in zip(itertools.product(*char_lists), itertools.product(*p_lst)):
             if len(chars) != num_placeholders:
                 continue
             completion = list(text)
             for i, c in zip(placeholders, chars):
                 completion[i] = c
+            if len(''.join(completion)) != len(text):
+                continue
             completions.append(''.join(completion))
-        return completions
-
-    def get_predictions_dict(self, text: str, full_pred: list) -> dict:
-        """
-        this function generates a dictionary of words with sub masked as key and all the possible word predictions as
-        values
-        :param text: text from the user .example :  "אני או?ב שו??לד"
-        :param full_pred: list of all the combinations of the predictions filled in the text
-        :return: dictionary of words with sub masked as key and all the possible word predictions as
-        values .example : {'או?ב': ['אויב', 'אוהב', 'אוכב'], 'שו??לד': ['שובולד','שויתלד', 'שוקולד', 'שויבלד']}
-        """
-        splitted_sent = text.split()
-        q_mark_indexes = []
-        pred_dict = {}
-        for word in range(len(splitted_sent)):
-            if '?' in splitted_sent[word]:
-                q_mark_indexes.append(word)
-                pred_dict[splitted_sent[word]] = []
-        for i in q_mark_indexes:
-            for pred in full_pred:
-                if pred.split()[i] not in pred_dict[splitted_sent[i]]:
-                    pred_dict[splitted_sent[i]] += [pred.split()[i]]
-        return pred_dict
+            scores.append(sum(score) / num_placeholders)
+        return completions, scores
