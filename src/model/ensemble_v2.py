@@ -18,18 +18,18 @@ class EnsembleV2(Model):
         self.char_model = StubModel(ModelResult([
             TextPart('אני ', None),
             TextPart('?', [Prediction('אוהב', 0.4), Prediction('שותה', 0.5)]),
-            TextPart(' שוקולד וע', None),
+            TextPart(' שוקולד', None),
             TextPart('?', [Prediction('ועוגות', 1), Prediction('וערגות', 1)]),
-            TextPart('גות גבינה', None),
+            TextPart(' גבינה', None),
         ]))
 
 
         self.word_model = StubModel(ModelResult([
             TextPart('אני ', None),
             TextPart('?', [Prediction('אוהב', 1), Prediction('שונא', 0.1)]),
-            TextPart(' שוקולד וע', None),
+            TextPart(' שוקולד', None),
             TextPart('?', [Prediction('ועוגות', 0.8), Prediction('וחוגות', 0.1)]),
-            TextPart('גות גבינה', None),
+            TextPart(' גבינה', None),
         ]))
 
     def predict(self, text: str, min_p: float = 0.1, char_model_weight: float = 0.5,
