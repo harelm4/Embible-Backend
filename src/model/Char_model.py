@@ -28,11 +28,10 @@ class CharModel(StandardModel):
             for pred in l:
                 preds.append(pred.value)
             list_of_preds.append(preds)
-        preds_only_lst = ModelResult(list_of_preds).lst
         list_of_p = []
-        for i in range(len(preds_only_lst)):
+        for i in range(len(list_of_preds)):
             p_lst = []
-            for j in range(len(preds_only_lst[i])):
+            for j in range(len(list_of_preds[i])):
                 p_lst.append(pres_only[i].predictions[j].score)
             list_of_p.append(p_lst)
         splitted_sent = text.split()
@@ -44,7 +43,7 @@ class CharModel(StandardModel):
                 next_pred.text = '?'
                 num_of_q_marks = splitted_sent[word].count('?')
                 completions, scores = self.fill_word_preds(splitted_sent[word],
-                                                           preds_only_lst[pred_index:pred_index + num_of_q_marks],
+                                                           list_of_preds[pred_index:pred_index + num_of_q_marks],
                                                            list_of_p[pred_index:pred_index + num_of_q_marks])
                 next_pred.predictions = list(filter(lambda x: x.score >= min_p, self.merge_preds(completions, scores)))
                 pred_index += num_of_q_marks
