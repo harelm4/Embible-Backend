@@ -51,6 +51,11 @@ class StringUtils():
 
     @staticmethod
     def index_of_words_contains_question_mark(s):
+        """
+
+        :param s: string-text
+        :return: indeces of all the words in the sentence that contains a ?
+        """
         words = s.split()
         indeces=[]
         for i, word in enumerate(words):
