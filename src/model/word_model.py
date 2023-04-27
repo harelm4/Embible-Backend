@@ -10,7 +10,7 @@ class wordModel(StandardModel):
         main function of this class, genetates predictions
         :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
         :param min_p: minimal value of prediction score
-        :return: charModelResult , an object encapsulating list of TextParts
+        :return: wordModelResult , an object encapsulating list of TextParts
         """
         if '?' not in text:
             return ModelResult([TextPart(text, None)])
