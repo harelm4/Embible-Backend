@@ -1,36 +1,21 @@
 from typing import List
 
+import config
 from src.classes.model_result import ModelResult
 from src.classes.prediction import Prediction
 from src.classes.text_part import TextPart
+from src.model.SameLengthAndCharsWordModel import SameLengthAndCharsWordModel
+
 from src.model.model import Model
-# from src.model.CharModel import CharModel
-# from src.model.SameLengthAndCharsWordModel import SameLengthAndCharsWordModel
-from src.model.stub_model import StubModel
-from src.utils.strings import StringUtils
+from src.model.Char_model import CharModel
+
 
 
 class EnsembleV2(Model):
     def __init__(self):
         self.model_path = 'EnsembleV2'
-        # text = "אני ???? שוקולד וע?גות גבינה"
-        # stubs , TODO - replace to real models when ready
-        self.char_model = StubModel(ModelResult([
-            TextPart('אני ', None),
-            TextPart('?', [Prediction('אוהב', 0.4), Prediction('שותה', 0.5)]),
-            TextPart(' שוקולד', None),
-            TextPart('?', [Prediction('ועוגות', 1), Prediction('וערגות', 1)]),
-            TextPart(' גבינה', None),
-        ]))
-
-
-        self.word_model = StubModel(ModelResult([
-            TextPart('אני ', None),
-            TextPart('?', [Prediction('אוהב', 1), Prediction('שונא', 0.1)]),
-            TextPart(' שוקולד', None),
-            TextPart('?', [Prediction('ועוגות', 0.8), Prediction('וחוגות', 0.1)]),
-            TextPart(' גבינה', None),
-        ]))
+        self.char_model = CharModel(config.configs['char_model_path'])
+        self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
 
     def predict(self, text: str, min_p: float = 0.1, char_model_weight: float = 0.5,
                 space_predictor=None) -> ModelResult:
@@ -97,4 +82,3 @@ class EnsembleV2(Model):
                     res_preds.append(Prediction(char_pred.value, score))
 
         return TextPart('?', list(sorted(res_preds, key=lambda x: x.score, reverse=True)))
-
