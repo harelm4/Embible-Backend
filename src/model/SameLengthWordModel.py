@@ -3,15 +3,15 @@ from src.classes.prediction import Prediction
 from src.classes.text_part import TextPart
 from src.model.model import Model
 from src.model.standard_model import StandardModel
-from src.model.word_model import wordModel
+from src.model.word_model import WordModel
 from src.utils.strings import StringUtils
 
 
 
-class SameLengthWordModel(wordModel):
+class SameLengthWordModel(WordModel):
 
     def predict(self,text:str,min_p:float=0.01):
-        modelResult=super.predict(text,min_p)
+        modelResult=super(SameLengthWordModel, self).predict(text,min_p)
         return self.filter_predictions_by_size(modelResult,text)
 
 

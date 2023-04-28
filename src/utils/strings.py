@@ -74,7 +74,7 @@ class StringUtils():
         for i, word in enumerate(words):
             if any(c == '?' for c in word):
                 for j,c in enumerate(word):
-                    if(i in indeces.keys()):
+                    if(i not in indeces.keys()):
                         indeces[i]=[(j,c)]#j- index in word, c-the char itself
                     else:
                         indeces[i].append((j,c))
