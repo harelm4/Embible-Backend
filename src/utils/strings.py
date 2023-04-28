@@ -50,7 +50,7 @@ class StringUtils():
         return indeces
 
     @staticmethod
-    def index_of_words_contains_question_mark(s):
+    def index_of_words_contains_question_mark(s:str):
         """
 
         :param s: string-text
@@ -64,7 +64,7 @@ class StringUtils():
         return indeces
 
     @staticmethod
-    def get_known_chars_and_their_indeces(s):
+    def get_known_chars_and_their_indeces(s:str):
         '''
         :param s: input text
         :return: dict: {index_of_masked_word:[(index of char in word,char)]}

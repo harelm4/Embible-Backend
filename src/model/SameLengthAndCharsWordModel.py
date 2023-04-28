@@ -12,8 +12,8 @@ from src.utils.strings import StringUtils
 
 class SameLengthAndCharsWordModel(SameLengthWordModel):
 
-    def predict(self,text):
-        modelResult=super.predict(text)
+    def predict(self,text:str,min_p:float=0.01):
+        modelResult=super.predict(text,min_p)
         return self.filter_predictions_by_chars(modelResult,text)
 
     def filter_predictions_by_chars(self,modelResult: ModelResult, text: str):
@@ -37,7 +37,7 @@ class SameLengthAndCharsWordModel(SameLengthWordModel):
                 text_part.predictions = new_preds
                 modelResult.lst[i] = text_part
         return modelResult
-    def does_word_contains_known_chars(self,pred_by_model, known_cars_lst):
+    def does_word_contains_known_chars(self,pred_by_model:str, known_cars_lst:list[tuple[int,str]]):
         """
         :param pred_by_model:word prediction by the model
         :param known_cars_lst: list of tuples of [(index of char in word,char)]

@@ -10,8 +10,8 @@ from src.utils.strings import StringUtils
 
 class SameLengthWordModel(wordModel):
 
-    def predict(self,text):
-        modelResult=super.predict(text)
+    def predict(self,text:str,min_p:float=0.01):
+        modelResult=super.predict(text,min_p)
         return self.filter_predictions_by_size(modelResult,text)
 
 
