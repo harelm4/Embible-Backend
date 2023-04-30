@@ -3,7 +3,7 @@ from src.classes.text_part import TextPart
 from src.model.standard_model import StandardModel
 
 
-class wordModel(StandardModel):
+class WordModel(StandardModel):
 
     def predict(self, text: str, min_p: float = 0.01) -> ModelResult:
         """
@@ -15,7 +15,7 @@ class wordModel(StandardModel):
         if '?' not in text:
             return ModelResult([TextPart(text, None)])
         text_lst = [word if '?' not in word else '?' for word in text.split()]
-        preds_w = super(wordModel, self).predict(" ".join(text_lst))
+        preds_w = super(WordModel, self).predict(" ".join(text_lst))
         pres_only = preds_w.get_only_predictions()
         res = []
         for dict in preds_w:
