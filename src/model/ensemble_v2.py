@@ -75,6 +75,11 @@ class EnsembleV2(Model):
         :return: A merged TextPart
         """
         res_preds = []
+        if(len(word_textpart.predictions)==0):
+            for char_pred in char_textpart.predictions:
+                score =char_pred.score
+                res_preds.append(Prediction(char_pred.value, score))
+            return TextPart('?', list(sorted(res_preds, key=lambda x: x.score, reverse=True)))
         for char_pred in char_textpart.predictions:
             for word_pred in word_textpart.predictions:
                 if char_pred.value == word_pred.value:
