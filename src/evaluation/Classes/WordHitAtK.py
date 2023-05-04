@@ -24,12 +24,10 @@ class WordHitAtK(HitAtK):
         """
         if type(data) == 'str':
             data = self.get_data_at_hit_at_k_test_format(data)
-
         for entry_idx, entry in enumerate(data):
             real_values = entry['missing']
             modelRes = model.predict(entry['text']).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
-            print(list_of_preds) 
             all_words_and_missing_indexes = []
             missing_idxs_full_word_mask = self._get_missing_idxs(entry['text']) #getting all the missing indexes that we want to predict (for words only !)
             for pred_idx, preds in enumerate(list_of_preds):
@@ -63,24 +61,11 @@ class WordHitAtK(HitAtK):
                 if flag==True:
                   fit_count+=1
             
-            print(all_words_and_missing_indexes)
             if len(all_words_and_missing_indexes) ==0:
               return 0
             return fit_count / len(all_words_and_missing_indexes)
 
-    def _model_result_to_list_of_preds(self, modelRes: ModelResult) -> List[List[str]]:
-        """
-        converts model result to list of list of prediction strings
-        :param textparts: list of textpart
-        :return: list of prediction strings
-        """
-        res = []
-        for textpart in modelRes.lst:
-            preds = []
-            for pred in textpart.predictions:
-                preds.append(pred.value)
-            res.append(preds)
-        return res
+    
 
     def _get_missing_idxs(self,text: str) -> List[int]:
         """

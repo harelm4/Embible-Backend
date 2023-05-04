@@ -6,7 +6,6 @@ from src.classes.text_part import TextPart
 from src.evaluation.Classes.HitAtK import HitAtK
 from src.model.model import Model
 
-
 class CharHitAtK(HitAtK):
 
     def calculate(self, model: Model, data: str or List[dict], k: int) -> int:
@@ -46,19 +45,7 @@ class CharHitAtK(HitAtK):
 
             return fit_count / len(real_values)
 
-    def _model_result_to_list_of_preds(self, modelRes: ModelResult) -> List[List[str]]:
-        """
-        converts model result to list of list of prediction strings
-        :param textparts: list of textpart
-        :return: list of prediction strings
-        """
-        res = []
-        for textpart in modelRes.lst:
-            preds = []
-            for pred in textpart.predictions:
-                preds.append(pred.value)
-            res.append(preds)
-        return res
+    
 
     def _get_missing_idxs(self, pred_idx: int, text: str) -> List[int]:
         """
