@@ -9,7 +9,7 @@ from src.model.model import Model
 
 class CharHitAtK(HitAtK):
 
-    def calculate(self, model: Model, data: str or List[dict], k: int) -> int:
+    def calculate(self, model: Model, data: str or List[dict], k: int) -> float:
         """
         calculate hit@k score for chars.
         :param model: model to be tested
@@ -20,7 +20,7 @@ class CharHitAtK(HitAtK):
         """
         if type(data) == 'str':
             data = self.get_data_at_hit_at_k_test_format(data)
-
+        results=[]
         for entry_idx, entry in enumerate(data):
             real_values = list(entry['missing'].values())
             modelRes = model.predict(entry['text']).get_only_k_predictions(k)
@@ -44,7 +44,9 @@ class CharHitAtK(HitAtK):
                 if real_values[i] in c_preds:
                     fit_count += 1
 
-            return fit_count / len(real_values)
+
+            results.append(fit_count / len(real_values))
+        return results
 
     def _model_result_to_list_of_preds(self, modelRes: ModelResult) -> List[List[str]]:
         """

@@ -4,7 +4,7 @@ import time
 from huggingface_hub import login
 
 import config
-from src.evaluation.hit_at_k import calculate_hit_at_k, get_data_at_hit_at_k_test_format, calculate_word_hit_at_k
+from src.evaluation.deprecated.hit_at_k import calculate_hit_at_k, get_data_at_hit_at_k_test_format, calculate_word_hit_at_k
 from src.model.ensemble import Ensemble
 from src.model.model import Model
 from src.model.standard_model import StandardModel
