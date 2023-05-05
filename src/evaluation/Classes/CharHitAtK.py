@@ -6,12 +6,13 @@ from tqdm import tqdm
 from src.classes.model_result import ModelResult
 from src.classes.text_part import TextPart
 from src.evaluation.Classes.HitAtK import HitAtK
+from src.model.ensemble_v2 import EnsembleV2
 from src.model.model import Model
 
 
 class CharHitAtK(HitAtK):
 
-    def calculate(self, model: Model, data: str or List[dict], k: int) -> float:
+    def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None) -> float:
         """
         ** this hit@k works only for same word length models **
         calculate hit@k score for chars.
@@ -21,7 +22,7 @@ class CharHitAtK(HitAtK):
         :param k: the k of hit@k
         :return: hit@k score (# of char hists at k)/(# of missing chars)
         """
-        if type(data) == 'str':
+        if isinstance(data, str):
             data = self.get_data_at_hit_at_k_test_format(data)
         results=[]
         progress_bar = tqdm(range(len(data)), desc=f"{model.model_path} Char Hit@{k}", unit="entry",
@@ -29,7 +30,10 @@ class CharHitAtK(HitAtK):
         for entry_idx, entry in enumerate(data):
             progress_bar.update(1)
             real_values = list(entry['missing'].values())
-            modelRes = model.predict(entry['text']).get_only_k_predictions(k)
+            if char_weight is not None and isinstance(model, EnsembleV2):
+                modelRes = model.predict(entry['text'],char_model_weight=char_weight).get_only_k_predictions(k)
+            else:
+                modelRes = model.predict(entry['text']).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
 
             char_lst = []

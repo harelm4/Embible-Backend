@@ -37,11 +37,6 @@ def hit_at_k_eval(model: Model, file: str, k: int, hit_at_k_strategy: HitAtK, re
     results.append({'k': k, 'model': model.model_path, 'hit@k': res, 'file': file, 'time': t})
 
 
-def log_error(model: Model, file: str, k: int, e: str, results: List):
-    results.append(
-        {'k': k, 'model': model.model_path, 'hit@k': None, 'file': file, 'error': e})
-
-
 def getModel(baseline: int or str, model: str) -> Model:
     if baseline == 'baseline1':
         return WordModel(model)
@@ -59,21 +54,13 @@ def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]
         for file in files:
             for model_name in models:
                 if baseline == 'ensemble':
-                    # try:
                         model = ensemble
                         hit_at_k_eval(model, file, k, hit_at_k_strategy,results)
-                    # except Exception as e:
-                    #     print(e)
-                    #     log_error(model, file, k, e, results)
-
                 else:
                     for epoch in epochs:
-                        # try:
                             model = getModel(baseline, f'Embible/{model_name}-{epoch}-epochs')
                             hit_at_k_eval(model, file, k, hit_at_k_strategy,results)
-                        # except Exception as e:
-                        #     print(e)
-                        #     log_error(model, file, k, e, results)
+
 
         res_df = pd.DataFrame(results)
         csv_location = '../../data/results/' + f'{baseline}-{hit_at_k_strategy.__class__.__name__[:-1]}{k}.csv'
@@ -84,5 +71,5 @@ def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]
 for k in [1,5]:
     # hit_at_k('baseline1', k, word_hit_at_k, word_models, )
     for strategy in [char_hit_at_k]:
-        # hit_at_k('baseline2', k, strategy, word_models)
+        hit_at_k('baseline2', k, strategy, word_models)
         hit_at_k('ensemble', k, strategy, ['ensemble'])
