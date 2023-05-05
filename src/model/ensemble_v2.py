@@ -35,8 +35,6 @@ class EnsembleV2(Model):
             text, char_model_result = space_predictor.genText(char_model_result, text)
         word_model_result = self.word_model.predict(text)
         if len(char_model_result) != len(word_model_result):
-            print('word :', word_model_result)
-            print('chars :', char_model_result)
             raise Exception(
                 'there is something wrong with one of the models , the length of the predictions is not equal'
                 )

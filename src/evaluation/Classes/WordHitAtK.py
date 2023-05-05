@@ -27,7 +27,6 @@ class WordHitAtK(HitAtK):
             data = self.get_data_at_hit_at_k_test_format(data)
         results = []
         for entry_idx, entry in enumerate(data):
-            print(entry_idx)
             real_values = entry['missing']
             modelRes = model.predict(entry['text']).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)

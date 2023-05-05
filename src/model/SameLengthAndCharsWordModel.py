@@ -44,7 +44,6 @@ class SameLengthAndCharsWordModel(SameLengthWordModel):
         :param known_cars_lst: list of tuples of [(index of char in word,char)]
         :return: true if all known chars are in prediction else false
         """
-        print(pred_by_model)
         for i, c in known_cars_lst:
             if pred_by_model[i] != c:
                 return False
