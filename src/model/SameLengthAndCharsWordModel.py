@@ -11,8 +11,11 @@ from src.utils.strings import StringUtils
 
 
 class SameLengthAndCharsWordModel(SameLengthWordModel):
-
-    def predict(self, text: str, min_p: float = 0.01):
+    def __init__(self,model_path):
+        super(SameLengthAndCharsWordModel,self).__init__(model_path)
+        self._topk_predictions_raw=10000
+        
+    def predict(self, text: str, min_p: float = 0.00):
         modelResult = super(SameLengthAndCharsWordModel,self).predict(text, min_p)
         return self.filter_predictions_by_chars(modelResult, text)
 

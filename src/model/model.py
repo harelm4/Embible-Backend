@@ -12,6 +12,7 @@ class Model(ABC):
         self.model_path=model_path
         self.model=AutoModelForMaskedLM.from_pretrained(model_path)
         self.tokenizer=AutoTokenizer.from_pretrained(model_path)
+        self._topk_predictions_raw=100
 
     def predict(self,text:str,min_p:float)->ModelResult:
         """

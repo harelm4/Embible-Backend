@@ -15,7 +15,7 @@ class WordModel(StandardModel):
         if '?' not in text:
             return ModelResult([TextPart(text, None)])
         text_lst = [word if '?' not in word else '?' for word in text.split()]
-        preds_w = super(WordModel, self).predict(" ".join(text_lst))
+        preds_w = super(WordModel, self).predict(" ".join(text_lst),min_p)
         pres_only = preds_w.get_only_predictions()
         res = []
         for dict in preds_w:

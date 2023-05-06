@@ -83,7 +83,6 @@ class EnsembleV2(Model):
             for word_pred in word_textpart.predictions:
                 if char_pred.value == word_pred.value:
                     score = char_model_weight * char_pred.score + (1 - char_model_weight) * word_pred.score
-                    print(char_model_weight)
                     res_preds.append(Prediction(char_pred.value, score))
 
         return TextPart('?', list(sorted(res_preds, key=lambda x: x.score, reverse=True)))
