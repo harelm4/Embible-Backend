@@ -29,7 +29,7 @@ def test_predict3():
     whak = WordHitAtK()
     model = StubModel(ModelResult([
         TextPart('?', [Prediction('אוהב', 1), Prediction('עוהב', 1)]),
-        TextPart('?', [Prediction('ועוגות', 0,9), Prediction('ומאפי', 1)]),
+        TextPart('?', [Prediction('ועוגות', 0.9), Prediction('ומאפי', 1)]),
     ]))
     data = [{"text": "אני ???? שוקולד וע?גות גבינה", "missing": {"4": "א", "5": "ו", "6": "ה", "7": "ב", "18": "ו"}}]
     assert whak.calculate(model, data, 1) == 0.5
@@ -43,3 +43,8 @@ def test_predict4():
     ]))
     data = [{"text": "אני ???? שוקולד וע?גות גבינה", "missing": {"4": "א", "5": "ו", "6": "ה", "7": "ב", "18": "ו"}}]
     assert whak.calculate(model, data, 5) == 0
+
+test_predict1()
+test_predict2()
+test_predict3()
+test_predict4()
