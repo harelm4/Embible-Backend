@@ -30,13 +30,12 @@ class EnsembleV2(Model):
         :return: ModelResult that includes the prediction after the activation of formula
                 char_model_weight * char_pred.score + (1-char_model_weight) * word_pred.score
         """
+
         char_model_result = self.char_model.predict(text)
         if space_predictor:
             text, char_model_result = space_predictor.genText(char_model_result, text)
         word_model_result = self.word_model.predict(text)
         if len(char_model_result) != len(word_model_result):
-            print('word :', word_model_result)
-            print('chars :', char_model_result)
             raise Exception(
                 'there is something wrong with one of the models , the length of the predictions is not equal'
                 )

@@ -1,4 +1,5 @@
 import itertools
+from typing import List
 
 from src.classes.model_result import ModelResult
 from src.classes.prediction import Prediction
@@ -8,7 +9,7 @@ from src.model.standard_model import StandardModel
 
 class CharModel(StandardModel):
 
-    def predict(self, text: str, min_p: float = 0.01) -> ModelResult:
+    def predict(self, text: str, min_p: float = 0.1) -> ModelResult:
         """
         main function of this class, genetates predictions
         :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
@@ -17,23 +18,13 @@ class CharModel(StandardModel):
         """
         if '?' not in text:
             return ModelResult([TextPart(text, None)])
-        preds_w = super(CharModel, self).predict(text)
+        preds_w = super(CharModel, self).predict(text, min_p)
         pres_only = preds_w.get_only_predictions()
         predictions = [x.predictions for x in preds_w]
-        list_of_preds = []
-        for l in predictions:
-            if l == None:
-                continue
-            preds = []
-            for pred in l:
-                preds.append(pred.value)
-            list_of_preds.append(preds)
-        list_of_p = []
-        for i in range(len(list_of_preds)):
-            p_lst = []
-            for j in range(len(list_of_preds[i])):
-                p_lst.append(pres_only[i].predictions[j].score)
-            list_of_p.append(p_lst)
+
+        list_of_preds = self._get_list_of_str_preds(predictions)
+        list_of_scores = self._get_list_of_scores(list_of_preds, pres_only)
+
         splitted_sent = text.split()
         pred_index = 0
         res = []
@@ -44,7 +35,7 @@ class CharModel(StandardModel):
                 num_of_q_marks = splitted_sent[word].count('?')
                 completions, scores = self.fill_word_preds(splitted_sent[word],
                                                            list_of_preds[pred_index:pred_index + num_of_q_marks],
-                                                           list_of_p[pred_index:pred_index + num_of_q_marks])
+                                                           list_of_scores[pred_index:pred_index + num_of_q_marks])
                 next_pred.predictions = list(filter(lambda x: x.score >= min_p, self.merge_preds(completions, scores)))
                 pred_index += num_of_q_marks
             res.append(next_pred)
@@ -62,29 +53,49 @@ class CharModel(StandardModel):
             merged_lst.append(Prediction(pred, score))
         return merged_lst
 
-    def fill_word_preds(self, text: str, preds: list, p_lst: list) -> list:
+    def fill_word_preds(self, word: str, preds: list, p_lst: list) -> list:
         """
         this function fills in all the combinations of the predictions inside the text given
-        :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
+        :param word: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
         :param preds: list of lists of predictions .example: [[א,ב],[כ,ר]]
         :return: list of all the combinations of the predictions filled in the text
         """
-        placeholders = [i for i in range(len(text)) if text[i] == "?"]
+        placeholders = [i for i in range(len(word)) if word[i] == "?"]
         num_placeholders = len(placeholders)
         char_lists = [lst for lst in preds if lst]  # remove empty lists
         if not char_lists or num_placeholders != len(char_lists):
-            return []
+            return [],[]
 
         completions = []
         scores = []
         for chars, score in zip(itertools.product(*char_lists), itertools.product(*p_lst)):
             if len(chars) != num_placeholders:
                 continue
-            completion = list(text)
+            completion = list(word)
             for i, c in zip(placeholders, chars):
                 completion[i] = c
-            if len(''.join(completion)) != len(text):
+            if len(''.join(completion)) != len(word):
                 continue
             completions.append(''.join(completion))
             scores.append(sum(score) / num_placeholders)
         return completions, scores
+
+    def _get_list_of_str_preds(self, predictions: List[Prediction]) -> List[List[str]]:
+        list_of_preds = []
+        for l in predictions:
+            if l == None:
+                continue
+            preds = []
+            for pred in l:
+                preds.append(pred.value)
+            list_of_preds.append(preds)
+        return list_of_preds
+
+    def _get_list_of_scores(self, list_of_preds, pres_only):
+        list_of_p = []
+        for i in range(len(list_of_preds)):
+            p_lst = []
+            for j in range(len(list_of_preds[i])):
+                p_lst.append(pres_only[i].predictions[j].score)
+            list_of_p.append(p_lst)
+        return list_of_p

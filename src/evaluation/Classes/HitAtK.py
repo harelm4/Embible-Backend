@@ -1,14 +1,17 @@
+import sys
 from abc import ABC
 from typing import List
 
 import pandas as pd
+from tqdm import tqdm
 
 from src.model.model import Model
 
 
 class HitAtK(ABC):
 
-    def calculate(model:Model,data: str or List[dict],k:int)->int:
+
+    def calculate(self,model:Model,data: str or List[dict],k:int)->float:
         pass
 
     def get_data_at_hit_at_k_test_format(self,file_path: str)->list:
