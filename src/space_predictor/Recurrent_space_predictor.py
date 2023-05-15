@@ -18,5 +18,4 @@ class Recurrent_space_predictor(space_predictor):
         if text==new_txt:
             return new_txt,new_modelResult
         else:
-            print(text, new_txt)
             return self.genText(new_modelResult,new_txt,threshold)

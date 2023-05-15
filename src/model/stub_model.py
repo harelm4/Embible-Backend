@@ -12,6 +12,7 @@ class StubModel(Model):
         :param modelRes: a model result that when calling predict, the user gets exactly that
         """
         self.modelRes=modelRes
+        self.model_path='stub'
         pass
 
     def predict(self,text):

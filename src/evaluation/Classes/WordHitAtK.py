@@ -11,9 +11,10 @@ from src.classes.text_part import TextPart
 from src.evaluation.Classes.HitAtK import HitAtK
 from src.model.model import Model
 
+
 class WordHitAtK(HitAtK):
 
-    def calculate(self, model: Model, data: str or List[dict], k: int) -> int:
+    def calculate(self, model: Model, data: str or List[dict], k: int) -> float:
         """
         calculate hit@k score for words.
         :param model: model to be tested
@@ -24,7 +25,10 @@ class WordHitAtK(HitAtK):
         """
         if type(data) == 'str':
             data = self.get_data_at_hit_at_k_test_format(data)
+
+
         total_score=0
+
         for entry_idx, entry in enumerate(data):
             real_values = entry['missing']
             indeces_of_missing_words=[i for i in range(len(entry["text"].split())) if any(c=="?" for c in entry["text"].split()[i])]
@@ -32,6 +36,7 @@ class WordHitAtK(HitAtK):
             recreated_text=self.recreate_text(entry['text'],entry['missing'])
             masked_words=[recreated_text.split()[word] for word in range(len(recreated_text)) if word in indeces_of_missing_words]
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
+
             mone=0
             mechane=len(list_of_preds)
             for index,preds in  enumerate(list_of_preds):
@@ -45,3 +50,4 @@ class WordHitAtK(HitAtK):
         for key,value in missing.items():
             new_text=new_text[:int(key)]+value+new_text[int(key)+1:]
         return new_text
+
