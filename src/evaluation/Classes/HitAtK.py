@@ -8,7 +8,7 @@ from tqdm import tqdm
 from src.model.model import Model
 
 
-class HitAtK(ABC):
+class evaluation(ABC):
 
 
     def calculate(self,model:Model,data: str or List[dict],k:int)->float:
