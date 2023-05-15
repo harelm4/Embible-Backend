@@ -12,7 +12,7 @@ from src.evaluation.Classes.HitAtK import HitAtK
 from src.model.model import Model
 
 
-class WordHitAtK(HitAtK):
+class WordHitAtK(Evaluation):
 
     def calculate(self, model: Model, data: str or List[dict], k: int) -> float:
         """

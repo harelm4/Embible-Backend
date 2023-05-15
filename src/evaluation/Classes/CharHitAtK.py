@@ -10,7 +10,7 @@ from src.model.ensemble_v2 import EnsembleV2
 from src.model.model import Model
 
 
-class CharHitAtK(HitAtK):
+class CharHitAtK(Evaluation):
 
     def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None) -> float:
         """
