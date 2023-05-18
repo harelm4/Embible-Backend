@@ -12,8 +12,7 @@ from src.evaluation.Classes.HitAtK import HitAtK
 from src.model.model import Model
 
 
-class WordHitAtK(evaluation):
-
+class WordHitAtK(HitAtK):
     def calculate(self, model: Model, data: str or List[dict], k: int) -> float:
         """
         calculate hit@k score for words.
