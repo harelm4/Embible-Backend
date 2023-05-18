@@ -44,6 +44,7 @@ def test_predict4():
     data = [{"text": "אני ???? שוקולד וע?גות גבינה", "missing": {"4": "א", "5": "ו", "6": "ה", "7": "ב", "18": "ו"}}]
     assert whak.calculate(model, data, 5) == 0
 
+
 def test_predict5():
     whak = WordHitAtK()
     model = StubModel(ModelResult([

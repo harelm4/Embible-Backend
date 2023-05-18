@@ -17,7 +17,7 @@ class EnsembleV2(Model):
         self.char_model = CharModel(config.configs['char_model_path'])
         self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
 
-    def predict(self, text: str, min_p: float = 0.1, char_model_weight: float = 0.5,
+    def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.5,
                 space_predictor=None) -> ModelResult:
         """
         predicting based on word model and char model
@@ -31,10 +31,10 @@ class EnsembleV2(Model):
                 char_model_weight * char_pred.score + (1-char_model_weight) * word_pred.score
         """
 
-        char_model_result = self.char_model.predict(text)
+        char_model_result = self.char_model.predict(text,min_p)
         if space_predictor:
             text, char_model_result = space_predictor.genText(char_model_result, text)
-        word_model_result = self.word_model.predict(text)
+        word_model_result = self.word_model.predict(text,min_p)
         if len(char_model_result) != len(word_model_result):
             raise Exception(
                 'there is something wrong with one of the models , the length of the predictions is not equal'

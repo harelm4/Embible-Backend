@@ -68,3 +68,11 @@ def test_get_missing_idxs():
     text='אני ה?לך לנ?ן'
     assert chak._get_missing_idxs(0,text)==[1]
     assert chak._get_missing_idxs(1, text) == [2]
+
+
+
+test_predict1()
+test_predict2()
+test_predict3()
+test_model_result_to_list_of_preds()
+test_get_missing_idxs()
