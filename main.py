@@ -14,7 +14,7 @@ ens=EnsembleV2()
 @app.route("/calc",methods=['GET'])
 def calc():
     args=request.args.to_dict()
-    response = flask.jsonify(ens.predict(args['text']))
+    response = flask.jsonify(ens.predict(args['text']).get_ui_format())
     return response
 
 @app.route("/")
