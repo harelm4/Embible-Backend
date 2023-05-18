@@ -1,0 +1,4 @@
+,k,model,hit@k,file,time
+0,5,EnsembleV2,0.3879038899232841,../../data/Hit@K/masked MIX char tokens/mix_5.json,2.4509450634320578
+1,5,EnsembleV2,0.2727758241828136,../../data/Hit@K/masked MIX char tokens/mix_10.json,2.862932542959849
+2,5,EnsembleV2,0.22924699195805495,../../data/Hit@K/masked MIX char tokens/mix_15.json,3.0006972114245096
