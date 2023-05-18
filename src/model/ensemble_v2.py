@@ -17,7 +17,7 @@ class EnsembleV2(Model):
         self.char_model = CharModel(config.configs['char_model_path'])
         self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
 
-    def predict(self, text: str, min_p: float = 0.000001, char_model_weight: float = 0.5,
+    def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.5,
                 space_predictor=None) -> ModelResult:
         """
         predicting based on word model and char model
