@@ -9,7 +9,7 @@ from src.model.standard_model import StandardModel
 
 class CharModel(StandardModel):
 
-    def predict(self, text: str, min_p: float = 0.1) -> ModelResult:
+    def predict(self, text: str, min_p: float = 0.0001) -> ModelResult:
         """
         main function of this class, genetates predictions
         :param text: text from the user .example :  "ויב?א ה את הש??ם ואת ה?רץ"
@@ -39,7 +39,11 @@ class CharModel(StandardModel):
                 next_pred.predictions = list(filter(lambda x: x.score >= min_p, self.merge_preds(completions, scores)))
                 pred_index += num_of_q_marks
             res.append(next_pred)
-        return ModelResult(res)
+        modelResult=ModelResult(res)
+        for text_index,text_part in enumerate(modelResult.lst):
+            if text_part.text=='?':
+                modelResult[text_index].predictions=modelResult[text_index].predictions[:100]
+        return modelResult
 
     def merge_preds(self, preds: list, p_lst: list) -> list:
         """
@@ -68,7 +72,9 @@ class CharModel(StandardModel):
 
         completions = []
         scores = []
-        for chars, score in zip(itertools.product(*char_lists), itertools.product(*p_lst)):
+        comb_chars=self.limit_product(char_lists,1000)#list(itertools.product(*char_lists))[:1000]
+        comb_scores=self.limit_product(p_lst,1000)#list(itertools.product(*p_lst))[:1000]
+        for chars, score in zip(comb_chars,comb_scores):
             if len(chars) != num_placeholders:
                 continue
             completion = list(word)
@@ -99,3 +105,17 @@ class CharModel(StandardModel):
                 p_lst.append(pres_only[i].predictions[j].score)
             list_of_p.append(p_lst)
         return list_of_p
+
+    def limit_product(self,char_lists, limit):
+        # Calculate the total number of instances
+        total_instances = 1
+        for char_list in char_lists:
+            total_instances *= len(char_list)
+
+        # Determine the number of instances to slice
+        num_instances = min(total_instances, limit)
+
+        # Use itertools.islice to get the limited instances
+        limited_product = itertools.islice(itertools.product(*char_lists), num_instances)
+
+        return list(limited_product)
