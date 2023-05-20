@@ -28,11 +28,12 @@ class CharHitAtK(HitAtK):
                             bar_format="\033[32m{l_bar}{bar}{r_bar}\033[0m")
         for entry_idx, entry in enumerate(data):
             progress_bar.update(1)
+            current_text=entry['text']
             real_values = list(entry['missing'].values())
             if char_weight is not None and isinstance(model, EnsembleV2):
-                modelRes = model.predict(entry['text'],char_model_weight=char_weight).get_only_k_predictions(k)
+                modelRes = model.predict(current_text,char_model_weight=char_weight).get_only_k_predictions(k)
             else:
-                modelRes = model.predict(entry['text']).get_only_k_predictions(k)
+                modelRes = model.predict(current_text).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
 
             char_lst = []
