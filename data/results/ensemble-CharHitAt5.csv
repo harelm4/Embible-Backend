@@ -1,4 +1,4 @@
 ,k,model,hit@k,file,time
-0,5,EnsembleV2,0.9130023106288933,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,5.75917577346166
-1,5,EnsembleV2,0.8654495859229531,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,10.078947186470032
-2,5,EnsembleV2,0.8004614395663805,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,13.083159172534943
+0,5,EnsembleV2,0.9130023106288933,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,6.600489771366119
+1,5,EnsembleV2,0.8654495859229531,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,13.501092823346456
+2,5,EnsembleV2,0.8004614395663805,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,13.789741889635723

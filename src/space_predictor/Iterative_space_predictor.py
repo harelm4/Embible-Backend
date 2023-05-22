@@ -1,7 +1,7 @@
 
 from src.model.model import Model
 from src.space_predictor.space_predictor import space_predictor
-from src.model.single_char_model import single_char_model
+from src.model.standard_model import StandardModel
 import config
 import copy
 class Iterative_space_predictor(space_predictor):
@@ -16,7 +16,7 @@ class Iterative_space_predictor(space_predictor):
 
         index_in_text=0
         indeces_of_spaces=[]
-        char_model=single_char_model(config.configs['char_model_path'])
+        char_model=StandardModel(config.configs['char_model_path'])
         model_predictions=char_model.predict(text)
         for text_part in model_predictions:
             if text[index_in_text]==' ':
