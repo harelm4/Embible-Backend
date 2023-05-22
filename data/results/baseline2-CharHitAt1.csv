@@ -1,28 +1,28 @@
 ,k,model,hit@k,file,time
-0,1,Embible/AlephBertGimmel-10-epochs,0.24743518281446183,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.2793554743131001
-1,1,Embible/AlephBertGimmel-20-epochs,0.2557607493039143,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.2360780000686646
-2,1,Embible/AlephBertGimmel-50-epochs,0.2564128005814286,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.6118388970692952
-3,1,Embible/mBert-10-epochs,0.10892952092662629,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.2806779742240906
-4,1,Embible/mBert-20-epochs,0.10065147408295574,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.7503925601641337
-5,1,Embible/mBert-50-epochs,0.10586261029876484,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.4076550443967184
-6,1,Embible/distilBert-10-epochs,0.06958114102011845,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.1214249968528747
-7,1,Embible/distilBert-20-epochs,0.11310655283886618,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.0558578411738078
-8,1,Embible/distilBert-50-epochs,0.11144039009320693,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.2348953048388163
-9,1,Embible/AlephBertGimmel-10-epochs,0.16312471379115193,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.5029455145200095
-10,1,Embible/AlephBertGimmel-20-epochs,0.16699654309771533,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.4522217035293579
-11,1,Embible/AlephBertGimmel-50-epochs,0.1669489561821828,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.529677939414978
-12,1,Embible/mBert-10-epochs,0.07187154223098899,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.3747716466585795
-13,1,Embible/mBert-20-epochs,0.07092206668257248,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.2255561987559
-14,1,Embible/mBert-50-epochs,0.07296230439037332,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.1876663247744241
-15,1,Embible/distilBert-10-epochs,0.052353714748457535,../../data/Hit@K/masked MIX char tokens/mix_10.json,0.9568446238835653
-16,1,Embible/distilBert-20-epochs,0.06993433238459883,../../data/Hit@K/masked MIX char tokens/mix_10.json,0.9240391055742899
-17,1,Embible/distilBert-50-epochs,0.0765343666367986,../../data/Hit@K/masked MIX char tokens/mix_10.json,0.9553864518801372
-18,1,Embible/AlephBertGimmel-10-epochs,0.12372582538941991,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.2501749316851298
-19,1,Embible/AlephBertGimmel-20-epochs,0.1261681821024531,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.2842158913612365
-20,1,Embible/AlephBertGimmel-50-epochs,0.12196480726150725,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.2151703278223673
-21,1,Embible/mBert-10-epochs,0.047479981970743344,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.1680628538131714
-22,1,Embible/mBert-20-epochs,0.047940679303190986,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.148745596408844
-23,1,Embible/mBert-50-epochs,0.05114800987941864,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.523665964603424
-24,1,Embible/distilBert-10-epochs,0.034578059728328954,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.1732858141263327
-25,1,Embible/distilBert-20-epochs,0.04711350540887624,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.045465596516927
-26,1,Embible/distilBert-50-epochs,0.04369229205127523,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.0922897577285766
+0,1,Embible/AlephBertGimmel-10-epochs,0.4026890362333401,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.9159062107404073
+1,1,Embible/AlephBertGimmel-20-epochs,0.4193372848436139,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,1.2615227063496908
+2,1,Embible/AlephBertGimmel-50-epochs,0.4463766659969192,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.8491597294807434
+3,1,Embible/mBert-10-epochs,0.19710836514633975,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.9727416475613911
+4,1,Embible/mBert-20-epochs,0.19609034893845018,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.9426411231358846
+5,1,Embible/mBert-50-epochs,0.20899052307280153,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.904845122496287
+6,1,Embible/distilBert-10-epochs,0.12057548054383509,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.6562565922737121
+7,1,Embible/distilBert-20-epochs,0.2162095639943742,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.7223285595575969
+8,1,Embible/distilBert-50-epochs,0.21472942200790304,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,0.7273747682571411
+9,1,Embible/AlephBertGimmel-10-epochs,0.33215736189391454,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,1.0130430857340496
+10,1,Embible/AlephBertGimmel-20-epochs,0.34009080924990487,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,1.0074271003405253
+11,1,Embible/AlephBertGimmel-50-epochs,0.34933324374573177,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,1.0340304732322694
+12,1,Embible/mBert-10-epochs,0.15631725514020609,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,1.0020041267077129
+13,1,Embible/mBert-20-epochs,0.14468920078921257,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,0.9949443181355794
+14,1,Embible/mBert-50-epochs,0.15676866185712884,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,0.9851683497428894
+15,1,Embible/distilBert-10-epochs,0.10457662675277918,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,0.8173713843027751
+16,1,Embible/distilBert-20-epochs,0.16666709518985223,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,0.8086226900418599
+17,1,Embible/distilBert-50-epochs,0.15414375472750527,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,0.7951191822687785
+18,1,Embible/AlephBertGimmel-10-epochs,0.26724857359574533,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,1.0494032820065817
+19,1,Embible/AlephBertGimmel-20-epochs,0.2735422582531112,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,1.0438212593396505
+20,1,Embible/AlephBertGimmel-50-epochs,0.2768555116279606,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,1.04403418302536
+21,1,Embible/mBert-10-epochs,0.12108062616371591,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,1.0619013468424479
+22,1,Embible/mBert-20-epochs,0.11498352456087392,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,1.085755713780721
+23,1,Embible/mBert-50-epochs,0.12149955063233012,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,1.127328093846639
+24,1,Embible/distilBert-10-epochs,0.07992551022095527,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,0.9001489400863647
+25,1,Embible/distilBert-20-epochs,0.12989202784012316,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,0.8523055116335551
+26,1,Embible/distilBert-50-epochs,0.1279584681815275,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,0.8542823115984599
