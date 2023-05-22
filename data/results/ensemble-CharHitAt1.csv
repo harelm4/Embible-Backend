@@ -1,3 +1,5 @@
 ,k,model,hit@k,file,time
-0,1,EnsembleV2,0.3832337406410689,../../data/Hit@K/masked MIX char tokens/mix_5.json,7.357371000448863
-1,1,EnsembleV2,0.28033414202177387,../../data/Hit@K/masked MIX char tokens/mix_10.json,12.237592204411824
+0,1,EnsembleV2,0.7763160538476999,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,11.158231155077617
+1,1,EnsembleV2,0.7213856734635221,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,16.722185858090718
+2,1,EnsembleV2,0.6447781265547597,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,21.65261407693227
+

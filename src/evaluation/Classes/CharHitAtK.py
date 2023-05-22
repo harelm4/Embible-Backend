@@ -8,10 +8,12 @@ from src.classes.text_part import TextPart
 from src.evaluation.Classes.HitAtK import HitAtK
 from src.model.ensemble_v2 import EnsembleV2
 from src.model.model import Model
+from src.space_predictor.space_predictor import space_predictor
+from src.space_predictor.Iterative_space_predictor import Iterative_space_predictor
 
 
 class CharHitAtK(HitAtK):
-    def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None) -> float:
+    def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None, space_predictor: space_predictor=Iterative_space_predictor) -> float:
         """
         ** this hit@k works only for same word length models **
         calculate hit@k score for chars.
@@ -30,6 +32,10 @@ class CharHitAtK(HitAtK):
             progress_bar.update(1)
             current_text=entry['text']
             real_values = list(entry['missing'].values())
+            if(real_values==[]):
+                continue
+            # if(space_predictor):
+            #
             if char_weight is not None and isinstance(model, EnsembleV2):
                 modelRes = model.predict(current_text,char_model_weight=char_weight).get_only_k_predictions(k)
             else:
@@ -38,7 +44,7 @@ class CharHitAtK(HitAtK):
 
             char_lst = []
             for pred_idx, preds in enumerate(list_of_preds):
-                missing_idxs = self._get_missing_idxs(pred_idx, entry['text'])
+                missing_idxs = self._get_missing_idxs(pred_idx, current_text)
 
                 for j in missing_idxs:
                     pred_missing_chars = []

@@ -19,7 +19,7 @@ login(config.configs['hf_token'])
 
 epochs = [10, 20, 50]
 data_masked1 = [15, 25, 30]
-data_masked2 = [5, 10, 15]
+data_masked2 = [5, 15, 25,30]
 ensemble = EnsembleV2()
 word_models = ['AlephBertGimmel', 'mBert', 'distilBert']
 
@@ -49,7 +49,8 @@ def getModel(baseline: int or str, model: str) -> Model:
 def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]):
     results = []
     for i, mask_precent in enumerate(data_masked1):
-        mix_file = f'../../data/Hit@K/masked MIX char tokens/mix_{data_masked2[i]}.json'
+        #mix_file = f'../../data/Hit@K/masked MIX char tokens/mix_{data_masked2[i]}.json'
+        mix_file =f'../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_{data_masked2[i]}_no_niqqud_new.json'
         files = [mix_file]
         for file in files:
             for model_name in models:
