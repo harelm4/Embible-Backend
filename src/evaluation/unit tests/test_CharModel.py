@@ -39,3 +39,4 @@ def test_has_correct_known_chars():
         for txt_pred in txt_preds:
             is_correct_known_chars(expected_substrings[i], txt_pred)
 
+test_has_correct_known_chars()
