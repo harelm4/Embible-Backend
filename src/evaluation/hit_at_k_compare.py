@@ -71,5 +71,5 @@ def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]
 for k in [1,5]:
     # hit_at_k('baseline1', k, word_hit_at_k, word_models, )
     for strategy in [char_hit_at_k]:
-        hit_at_k('baseline2', k, strategy, word_models)
+        # hit_at_k('baseline2', k, strategy, word_models)
         hit_at_k('ensemble', k, strategy, ['ensemble'])

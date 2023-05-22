@@ -12,13 +12,13 @@ from src.model.Char_model import CharModel
 
 
 class EnsembleV2(Model):
-    def __init__(self):
+    def __init__(self,space_predictor=None):
         self.model_path = 'EnsembleV2'
         self.char_model = CharModel(config.configs['char_model_path'])
         self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
+        self.space_predictor=space_predictor
 
-    def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.5,
-                space_predictor=None) -> ModelResult:
+    def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.5) -> ModelResult:
         """
         predicting based on word model and char model
         :param text: the text to predict , for example "אני ???? שוקולד וע?גות גבינה"
@@ -32,8 +32,8 @@ class EnsembleV2(Model):
         """
 
         char_model_result = self.char_model.predict(text,min_p)
-        if space_predictor:
-            text, char_model_result = space_predictor.genText(char_model_result, text)
+        if self.space_predictor:
+            text, char_model_result = self.space_predictor.genText(char_model_result, text)
         word_model_result = self.word_model.predict(text,min_p)
         if len(char_model_result) != len(word_model_result):
             raise Exception(
