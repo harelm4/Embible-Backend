@@ -6,7 +6,7 @@ from huggingface_hub import login
 
 import config
 from src.evaluation.Classes.CharHitAtK import CharHitAtK
-from src.evaluation.Classes.HitAtK import HitAtK
+from src.evaluation.Classes.Metric import Metric
 from src.evaluation.Classes.WordHitAtK import WordHitAtK
 from src.model.SameLengthWordModel import SameLengthWordModel
 from src.model.ensemble_v2 import EnsembleV2
@@ -26,7 +26,7 @@ word_models = ['AlephBertGimmel', 'mBert', 'distilBert']
 
 
 
-def hit_at_k_eval(model: Model, file: str, k: int, hit_at_k_strategy: HitAtK, results: List):
+def hit_at_k_eval(model: Model, file: str, k: int, hit_at_k_strategy: Metric, results: List):
     data=hit_at_k_strategy.get_data_at_hit_at_k_test_format(file)
     t1 = time.time()
     res = hit_at_k_strategy.calculate(model, data, k)
@@ -46,7 +46,7 @@ def getModel(baseline: int or str, model: str) -> Model:
         return ensemble
 
 
-def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]):
+def hit_at_k(baseline: str, k: int, hit_at_k_strategy: Metric, models: List[str]):
     results = []
     for i, mask_precent in enumerate(data_masked1):
         #mix_file = f'../../data/Hit@K/masked MIX char tokens/mix_{data_masked2[i]}.json'

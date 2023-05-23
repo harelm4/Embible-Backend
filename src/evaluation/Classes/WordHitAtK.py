@@ -8,11 +8,11 @@ import math
 from typing import List
 from src.classes.model_result import ModelResult
 from src.classes.text_part import TextPart
-from src.evaluation.Classes.HitAtK import HitAtK
+from src.evaluation.Classes.Metric import Metric
 from src.model.model import Model
 
 
-class WordHitAtK(HitAtK):
+class WordHitAtK(Metric):
 
     def calculate(self, model: Model, data: str or List[dict], k: int) -> float:
         """

@@ -3,7 +3,7 @@ from typing import List
 import pandas as pd
 
 from src.evaluation.Classes.CharHitAtK import CharHitAtK
-from src.evaluation.Classes.HitAtK import HitAtK
+from src.evaluation.Classes.Metric import Metric
 from src.evaluation.Classes.WordHitAtK import WordHitAtK
 from src.evaluation.hit_at_k_compare import  data_masked1, data_masked2, hit_at_k_eval
 from src.model.ensemble_v2 import EnsembleV2
@@ -19,7 +19,7 @@ rec_ens=EnsembleV2(Recurrent_space_predictor())
 rec_ens.model_path='EnsembleV2_recurrent_sp'
 ensembles =[it_ens,rec_ens]
 
-def hit_at_k_sp( k: int, hit_at_k_strategy: HitAtK):
+def hit_at_k_sp(k: int, hit_at_k_strategy: Metric):
     results = []
     for i, mask_precent in enumerate(data_masked1):
         mix_file = f'../../data/Hit@K/masked MIX char tokens/mix_{data_masked2[i]}.json'
