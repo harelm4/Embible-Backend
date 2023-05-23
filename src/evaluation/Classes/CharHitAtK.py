@@ -5,14 +5,14 @@ from tqdm import tqdm
 
 from src.classes.model_result import ModelResult
 from src.classes.text_part import TextPart
-from src.evaluation.Classes.Metric import Metric
+from src.evaluation.Classes.HitAtK import HitAtK
 from src.model.ensemble_v2 import EnsembleV2
 from src.model.model import Model
 from src.space_predictor.space_predictor import space_predictor
 from src.space_predictor.Iterative_space_predictor import Iterative_space_predictor
 
 
-class CharHitAtK(Metric):
+class CharHitAtK(HitAtK):
     def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None, space_predictor: space_predictor=Iterative_space_predictor) -> float:
         """
         ** this hit@k works only for same word length models **
