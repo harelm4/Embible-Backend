@@ -3,7 +3,7 @@ from src.model.model import Model
 from src.space_predictor.space_predictor import space_predictor
 from src.space_predictor.Iterative_space_predictor import Iterative_space_predictor
 
-class Recurrent_space_predictor(space_predictor):
+class Recursive_space_predictor(space_predictor):
     def genText(self,text:str,threshold=0.1)->str:
         """
         In this function we will predict spaces in the text untill
