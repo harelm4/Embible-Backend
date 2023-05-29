@@ -7,7 +7,7 @@ from src.space_predictor.space_predictor import space_predictor
 
 class space_precision():
 
-    def calculate(self,predictor:space_predictor,data: str or List[dict])->float:
+    def calculate(self,predictor:space_predictor,data: str or List[dict],min_p)->float:
         if isinstance(data, str):
             data = self.get_data_at_test_format(data)
         tp=0
@@ -19,7 +19,7 @@ class space_precision():
             text=entry["text"]
             missing=entry["missing"]
 
-            res_text = predictor.genText(text)
+            res_text = predictor.genText(text,min_p)
             for i,v in missing.items():
                 if res_text[int(i)]==' ' and v==' ':
                     tp+=1
