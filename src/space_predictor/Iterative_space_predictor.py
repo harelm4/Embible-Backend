@@ -17,7 +17,7 @@ class Iterative_space_predictor(space_predictor):
 
         index_in_text=0
         time_of_spaces=0
-        model_res=StandardModel(config.configs['char_model_path']).predict(text)
+        model_res=StandardModel(config.configs['char_model_path']).predict(text,threshold)
         for index,text_part in enumerate(model_res.lst):
             if(text_part.text!='?'):
                 index_in_text+=len(text_part.text)

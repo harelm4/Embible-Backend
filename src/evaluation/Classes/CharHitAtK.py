@@ -28,11 +28,13 @@ class CharHitAtK(HitAtK):
         results=[]
         progress_bar = tqdm(range(len(data)), desc=f"{model.model_path} Char Hit@{k}", unit="entry",
                             bar_format="\033[32m{l_bar}{bar}{r_bar}\033[0m")
+        empty_masks=0
         for entry_idx, entry in enumerate(data):
             progress_bar.update(1)
             current_text=entry['text']
             real_values = list(entry['missing'].values())
             if(real_values==[]):
+                empty_masks+=1
                 continue
             # if(space_predictor):
             #
@@ -62,7 +64,7 @@ class CharHitAtK(HitAtK):
             else:
                 results.append(0)
 
-        return sum(results) / len(results)
+        return sum(results) / (len(results)-empty_masks)
 
     def _model_result_to_list_of_preds(self, modelRes: ModelResult) -> List[List[str]]:
         """
