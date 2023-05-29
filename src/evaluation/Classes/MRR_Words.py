@@ -17,14 +17,26 @@ from src.classes.model_result import ModelResult
 class MRR_WORDS(HitAtK):
 
     def calculate(self, model: Model, data: str or List[dict]) -> float:
+
         """
-        calculate hit@k score for words.
+        ** this MRR metric for words consider the rank of the prediction and divide it by 1. The result will be sum of all the ranking (that divided by 1)
+        dividing by num of masking cases.
+        For example:
+        model = StubModel(ModelResult([
+        TextPart('?', [Prediction('אוהב', 0.75), Prediction('עוהב', 1)]),
+        TextPart('?', [Prediction('ועוגיות', 1), Prediction('ומאפי', 1)]),]))
+        data = [{"text": "אני ???? שוקולד וע?גות גבינה", "missing": {"4": "א", "5": "ו", "6": "ה", "7": "ב", "18": "ו"}}]
+        The right prediction אוהב rank on second place (the prediction sorted by their score) so it will get 0.5.
+        For עוגות the right prediction rank on first place so it will get 1.
+        We had 2 cases of masking.
+        As a result we except to get the result: (0.5+1)/2 = 0.75.
+
         :param model: model to be tested
         :param data: data to be tested on. could be string if its a path to test json file or dict if its a ready to go
                      list in form of [{"text": "...", "missing": {...}}]
-        :param k: the k of hit@k
-        :return: hit@k score (# of words hists at k)/(# of missing words)
+        :return: MRR score (As explained above)
         """
+
         if type(data) == 'str':
             data = self.get_data_at_hit_at_k_test_format(data)
 

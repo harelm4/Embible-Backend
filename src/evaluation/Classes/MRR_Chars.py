@@ -20,14 +20,24 @@ from src.model.stub_model import StubModel
 class MRR_CHARS(HitAtK):
     def calculate(self, model: Model, data: str or List[dict],char_weight:float=None, space_predictor: space_predictor=Iterative_space_predictor) -> float:
         """
-        ** this hit@k works only for same word length models **
-        calculate hit@k score for chars.
+        ** this MRR metric for chars consider the rank of the prediction and divide it by 1.
+        For example:
+        model = StubModel(ModelResult([
+        TextPart('?', [Prediction('אוהב', 0.75), Prediction('עוהב', 1)]),
+        TextPart('?', [Prediction('ועוגות', 1), Prediction('ומאפי', 1)]),]))
+        data = [{"text": "אני ???? שוקולד וע?גות גבינה", "missing": {"4": "א", "5": "ו", "6": "ה", "7": "ב", "18": "ו"}}]
+        Because we look on the chars, the right prediction א rank on second place (the prediction sorted by their score) so it will get 0.5.
+        The chars ו,ה,ב rank on the first prediction so each char will get 1
+        For עוגות the right prediction ו rank on first place so it will get 1.
+        We had 5 cases of masking ( 5 chars to predict).
+        As a result we except to get the result: (0.5+1+1+1+1)/5 = 0.9.
+
         :param model: model to be tested
         :param data: data to be tested on. could be string if its a path to test json file or dict if its a ready to go
                      list in form of [{"text": "...", "missing": {...}}]
-        :param k: the k of hit@k
-        :return: hit@k score (# of char hists at k)/(# of missing chars)
+        :return: MRR score (As explained above)
         """
+
         if isinstance(data, str):
             data = self.get_data_at_hit_at_k_test_format(data)
         results=[]
@@ -100,10 +110,3 @@ class MRR_CHARS(HitAtK):
                     return [c_i for c_i, c in enumerate(word) if c=='?']
 
 
-chak = MRR_CHARS()
-model = StubModel(ModelResult([
-    TextPart('?', [Prediction('אוהב', 0.8), Prediction('עוהב', 1)]),
-    TextPart('?', [Prediction('ועוגות', 1), Prediction('ומאפים', 1)]),
-]))
-data = [{"text": "אני ???? שוקולד וע?גות גבינה", "missing": {"4": "א", "5": "ו", "6": "ה", "7": "ב", "18": "ו"}}]
-print(chak.calculate(model, data))
