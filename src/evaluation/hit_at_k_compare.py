@@ -50,7 +50,7 @@ def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]
     results = []
     for i, mask_precent in enumerate(data_masked1):
         #mix_file = f'../../data/Hit@K/masked MIX char tokens/mix_{data_masked2[i]}.json'
-        mix_file =f'../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_{data_masked2[i]}_no_niqqud_new.json'
+        mix_file =f'C:/Users/itaia/Desktop/שנה ד/סמסטר ח/פרויקט גמר/Embible-Backend/data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_{data_masked2[i]}_no_niqqud_new.json'
         files = [mix_file]
         for file in files:
             for model_name in models:
@@ -64,13 +64,14 @@ def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]
 
 
         res_df = pd.DataFrame(results)
-        csv_location = '../../data/results/' + f'{baseline}-{hit_at_k_strategy.__class__.__name__[:-1]}{k}.csv'
+        csv_location = 'C:/Users/itaia/Desktop/שנה ד/סמסטר ח/פרויקט גמר/' + f'{baseline}-{hit_at_k_strategy.__class__.__name__[:-1]}{k}.csv'
         print(f'writing to {csv_location}')
         res_df.to_csv(csv_location)
 
 
-# for k in [1,5]:
-#     # hit_at_k('baseline1', k, word_hit_at_k, word_models, )
-#     for strategy in [char_hit_at_k]:
-#         # hit_at_k('baseline2', k, strategy, word_models)
-#         hit_at_k('ensemble', k, strategy, ['ensemble'])
+for k in [1,5]:
+    # hit_at_k('baseline1', k, word_hit_at_k, word_models, )
+    for strategy in [word_hit_at_k]:
+        hit_at_k('baseline2', k, word_hit_at_k   , word_models)
+        hit_at_k('baseline1', k, word_hit_at_k, word_models)
+        #hit_at_k('ensemble', k, strategy, ['ensemble'])
