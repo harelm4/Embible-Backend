@@ -1,0 +1,5 @@
+,model,MRR Res,file,time
+0,EnsembleV2,0.835821545225635,C:/Users/itaia/Desktop/שנה ד/סמסטר ח/פרויקט גמר/Embible-Backend/data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,10.118452338377635
+1,EnsembleV2,0.7845528085081549,C:/Users/itaia/Desktop/שנה ד/סמסטר ח/פרויקט גמר/Embible-Backend/data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,18.321053429444632
+2,EnsembleV2,0.7133052381675474,C:/Users/itaia/Desktop/שנה ד/סמסטר ח/פרויקט גמר/Embible-Backend/data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,23.410847731431325
+3,EnsembleV2,0.6750739335218461,C:/Users/itaia/Desktop/שנה ד/סמסטר ח/פרויקט גמר/Embible-Backend/data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_30_no_niqqud_new.json,27.815703829129536

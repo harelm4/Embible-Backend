@@ -1,5 +1,5 @@
 ,k,model,hit@k,file,time
-0,1,EnsembleV2,0.7763160538476999,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,11.158231155077617
-1,1,EnsembleV2,0.7213856734635221,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,16.722185858090718
-2,1,EnsembleV2,0.6447781265547597,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,21.65261407693227
-
+0,1,EnsembleV2,0.776316054,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_5_no_niqqud_new.json,11.15823116
+1,1,EnsembleV2,0.721385673,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_15_no_niqqud_new.json,16.72218586
+2,1,EnsembleV2,0.644778127,../../data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_25_no_niqqud_new.json,21.65261408
+3,1,EnsembleV2,0.608347965,C:/Users/itaia/Desktop/שנה ד/סמסטר ח/פרויקט גמר/Embible-Backend/data/Hit@K/masked chars and subwords no masked spaces char tokens/masked_test_df_chars_and_subwords_no_masked_spaces_char_tokens_30_no_niqqud_new.json,24.48121622

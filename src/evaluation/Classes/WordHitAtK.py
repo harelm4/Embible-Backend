@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Apr 30 01:17:22 2023
-
-@author: itaia
-"""
 import math
 from typing import List
 from src.classes.model_result import ModelResult
@@ -65,4 +59,3 @@ class WordHitAtK(HitAtK):
         for key,value in missing.items():
             new_text=new_text[:int(key)]+value+new_text[int(key)+1:]
         return new_text
-
