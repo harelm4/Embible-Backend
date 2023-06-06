@@ -1,4 +1,6 @@
+import json
 import math
+from pprint import pprint
 from typing import List
 
 from tqdm import tqdm
@@ -13,6 +15,8 @@ from src.space_predictor.Iterative_space_predictor import Iterative_space_predic
 
 
 class CharHitAtK(HitAtK):
+    def __init__(self):
+        self.lop=[]
     def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None, space_predictor: space_predictor=Iterative_space_predictor) -> float:
         """
         ** this hit@k works only for same word length models **
@@ -34,13 +38,14 @@ class CharHitAtK(HitAtK):
             real_values = list(entry['missing'].values())
             if(real_values==[]):
                 continue
-            # if(space_predictor):
-            #
+
             if char_weight is not None and isinstance(model, EnsembleV2):
                 modelRes = model.predict(current_text,char_model_weight=char_weight).get_only_k_predictions(k)
             else:
                 modelRes = model.predict(current_text).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
+
+            self.lop.append(list_of_preds)
 
             char_lst = []
             for pred_idx, preds in enumerate(list_of_preds):
