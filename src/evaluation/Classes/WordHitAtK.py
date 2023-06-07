@@ -6,6 +6,9 @@ Created on Sun Apr 30 01:17:22 2023
 """
 import math
 from typing import List
+
+from tqdm import tqdm
+
 from src.classes.model_result import ModelResult
 from src.classes.text_part import TextPart
 from src.evaluation.Classes.HitAtK import HitAtK
@@ -26,11 +29,12 @@ class WordHitAtK(HitAtK):
         if type(data) == 'str':
             data = self.get_data_at_hit_at_k_test_format(data)
 
-
+        progress_bar = tqdm(range(len(data)), desc=f"{model.model_path} Word Hit@{k}", unit="entry",
+                            bar_format="\033[32m{l_bar}{bar}{r_bar}\033[0m")
         total_score=0
         amount_of_masking=0
         for entry_idx, entry in enumerate(data):
-            real_values = entry['missing']
+            progress_bar.update(1)
             indeces_of_missing_words=[i for i in range(len(entry["text"].split())) if any(c=="?" for c in entry["text"].split()[i])]
             modelRes = model.predict(entry['text']).get_only_k_predictions(k)
             recreated_text=self.recreate_text(entry['text'],entry['missing'])

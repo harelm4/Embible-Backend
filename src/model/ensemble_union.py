@@ -22,6 +22,7 @@ from src.model.Char_model import CharModel
 
 class EnsembleUnion(EnsembleV2):
     def __init__(self,space_predictor=None):
+        super(EnsembleUnion,self).__init__(space_predictor)
         self.model_path = 'EnsembleUnion'
         self.char_model = CharModel(config.configs['char_model_path'])
         self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
@@ -29,6 +30,7 @@ class EnsembleUnion(EnsembleV2):
 
     def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.1) -> ModelResult:
         return super(EnsembleUnion,self).predict(text, min_p,char_model_weight)
+    
     def merge_textparts(self, char_textpart: TextPart, word_textpart: TextPart, char_model_weight: float) -> TextPart:
         """
         Merges  `char_textpart` and `word_textpart` into one TextPart that all the predictions are apear in both previous
