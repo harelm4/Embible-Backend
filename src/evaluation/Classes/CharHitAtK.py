@@ -1,16 +1,25 @@
+import json
 import math
+from pprint import pprint
 from typing import List
+
+from tqdm import tqdm
 
 from src.classes.model_result import ModelResult
 from src.classes.text_part import TextPart
 from src.evaluation.Classes.HitAtK import HitAtK
+from src.model.ensemble_v2 import EnsembleV2
 from src.model.model import Model
+from src.space_predictor.space_predictor import space_predictor
+from src.space_predictor.Iterative_space_predictor import Iterative_space_predictor
 
 
 class CharHitAtK(HitAtK):
-
-    def calculate(self, model: Model, data: str or List[dict], k: int) -> int:
+    def __init__(self):
+        self.lop=[]
+    def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None, space_predictor: space_predictor=Iterative_space_predictor) -> float:
         """
+        ** this hit@k works only for same word length models **
         calculate hit@k score for chars.
         :param model: model to be tested
         :param data: data to be tested on. could be string if its a path to test json file or dict if its a ready to go
@@ -18,33 +27,49 @@ class CharHitAtK(HitAtK):
         :param k: the k of hit@k
         :return: hit@k score (# of char hists at k)/(# of missing chars)
         """
-        if type(data) == 'str':
+        if isinstance(data, str):
             data = self.get_data_at_hit_at_k_test_format(data)
-
+        results=[]
+        progress_bar = tqdm(range(len(data)), desc=f"{model.model_path} Char Hit@{k}", unit="entry",
+                            bar_format="\033[32m{l_bar}{bar}{r_bar}\033[0m")
+        empty_masks=0
         for entry_idx, entry in enumerate(data):
+            progress_bar.update(1)
+            current_text=entry['text']
             real_values = list(entry['missing'].values())
-            modelRes = model.predict(entry['text']).get_only_k_predictions(k)
+            if(real_values==[]):
+                empty_masks+=1
+                continue
+
+            if char_weight is not None and isinstance(model, EnsembleV2):
+                modelRes = model.predict(current_text,char_model_weight=char_weight).get_only_k_predictions(k)
+            else:
+                modelRes = model.predict(current_text).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
+
+            self.lop.append(list_of_preds)
+
             char_lst = []
             for pred_idx, preds in enumerate(list_of_preds):
-                missing_idxs = self._get_missing_idxs(pred_idx, entry['text'])
+                missing_idxs = self._get_missing_idxs(pred_idx, current_text)
+
                 for j in missing_idxs:
                     pred_missing_chars = []
                     for w in preds:
-                        try:
                             pred_missing_chars.append(w[j])
-                        except:
-                            # its possible that the model will predict a shorter
-                            # word then expected and then index j would be out of range
-                            pass
                     char_lst.append(pred_missing_chars)
 
-            fit_count = 0
-            for i, c_preds in enumerate(char_lst):
-                if real_values[i] in c_preds:
-                    fit_count += 1
 
-            return fit_count / len(real_values)
+            fit_count = 0
+            for real_val_idx, real_val in enumerate(real_values):
+                if real_val in char_lst[real_val_idx]:
+                    fit_count += 1
+            if len(real_values):
+                results.append(fit_count / len(real_values))
+            else:
+                results.append(0)
+
+        return sum(results) / (len(results)-empty_masks)
 
     def _model_result_to_list_of_preds(self, modelRes: ModelResult) -> List[List[str]]:
         """
@@ -74,4 +99,4 @@ class CharHitAtK(HitAtK):
             if '?' in word:
                 missing_word_count += 1
                 if pred_idx == missing_word_count:
-                    return [c_i for c_i, c in enumerate(word) if c == '?']
+                    return [c_i for c_i, c in enumerate(word) if c=='?']

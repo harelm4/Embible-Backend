@@ -41,7 +41,7 @@ class StandardModel(Model):
         res = []
         for mask_index in masked_pos:
             mask_hidden_state = last_hidden_state[mask_index]
-            topk_predictions=torch.topk(mask_hidden_state, k=100, dim=0)
+            topk_predictions=torch.topk(mask_hidden_state, k=self._topk_predictions_raw, dim=0)
             topk_preds_idx = topk_predictions[1]
             predictions = [self.tokenizer.decode(i.item()).strip() for i in topk_preds_idx]
             predictions=[i.replace('##', '') for i in predictions]

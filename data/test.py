@@ -15,8 +15,6 @@ data_list=list(pd.read_csv('test.csv', sep='\t', encoding='utf-8')['verse'])
 time_list=[]
 word_len_list=[]
 for txt in data_list:
-    print(f"========")
-    print(txt)
     t0=time.time()
     space_predictor=Iterative_space_predictor()
     res = ens.predict(txt,space_predictor=space_predictor)

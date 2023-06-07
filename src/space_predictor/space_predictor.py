@@ -4,5 +4,5 @@ from src.model.model import Model
 
 
 class space_predictor(ABC):
-    def genText(self,model:Model,text:str)->str:
+    def genText(self,text:str,threshold:int)->str:
         pass

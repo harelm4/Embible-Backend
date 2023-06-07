@@ -1,3 +1,4 @@
+from pprint import pprint
 from typing import List
 
 import config
@@ -12,13 +13,18 @@ from src.model.Char_model import CharModel
 
 
 class EnsembleV2(Model):
-    def __init__(self):
+    def __init__(self,space_predictor=None):
         self.model_path = 'EnsembleV2'
         self.char_model = CharModel(config.configs['char_model_path'])
         self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
+        self.space_predictor=space_predictor
 
-    def predict(self, text: str, min_p: float = 0.1, char_model_weight: float = 0.5,
-                space_predictor=None) -> ModelResult:
+        self.counter=0
+        self.pred_avg_lens=[]
+        self.pres=[]
+        self.intersection_pred_avg_lens=[]
+
+    def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.5) -> ModelResult:
         """
         predicting based on word model and char model
         :param text: the text to predict , for example "אני ???? שוקולד וע?גות גבינה"
@@ -30,18 +36,21 @@ class EnsembleV2(Model):
         :return: ModelResult that includes the prediction after the activation of formula
                 char_model_weight * char_pred.score + (1-char_model_weight) * word_pred.score
         """
-        char_model_result = self.char_model.predict(text)
-        if space_predictor:
-            text, char_model_result = space_predictor.genText(char_model_result, text)
-        word_model_result = self.word_model.predict(text)
+        self.counter=0
+        if self.space_predictor:
+            text = self.space_predictor.genText(text)
+
+        char_model_result = self.char_model.predict(text, min_p)
+        word_model_result = self.word_model.predict(text,min_p)
+
         if len(char_model_result) != len(word_model_result):
-            print('word :', word_model_result)
-            print('chars :', char_model_result)
             raise Exception(
                 'there is something wrong with one of the models , the length of the predictions is not equal'
                 )
 
-        return self.ensemble_predictions(char_model_result, word_model_result, char_model_weight)
+        res= self.ensemble_predictions(char_model_result, word_model_result, char_model_weight)
+        # self.statistics(res)
+        return res
 
     def ensemble_predictions(self, char_model_result: ModelResult, word_model_result: ModelResult,
                              char_model_weight: float) -> ModelResult:
@@ -76,14 +85,20 @@ class EnsembleV2(Model):
         """
         res_preds = []
         if(len(word_textpart.predictions)==0):
-            for char_pred in char_textpart.predictions:
-                score =char_pred.score
-                res_preds.append(Prediction(char_pred.value, score))
-            return TextPart('?', list(sorted(res_preds, key=lambda x: x.score, reverse=True)))
+            self.counter +=1
+            return char_textpart.sorted()
         for char_pred in char_textpart.predictions:
             for word_pred in word_textpart.predictions:
                 if char_pred.value == word_pred.value:
                     score = char_model_weight * char_pred.score + (1 - char_model_weight) * word_pred.score
                     res_preds.append(Prediction(char_pred.value, score))
 
+        self.intersection_pred_avg_lens.append(len(res_preds))
         return TextPart('?', list(sorted(res_preds, key=lambda x: x.score, reverse=True)))
+
+    def statistics(self,res:ModelResult):
+        self.pres.append(self.counter / len(res.get_only_predictions()))
+
+        num_of_preds = [len(textpart.predictions) for textpart in res.get_only_predictions()]
+        self.pred_avg_lens.append(sum(num_of_preds)/len(num_of_preds))
+
