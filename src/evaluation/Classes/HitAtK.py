@@ -11,7 +11,7 @@ from src.model.model import Model
 class HitAtK(ABC):
 
 
-    def calculate(self,model:Model,data: str or List[dict],k:int)->float:
+    def calculate(self,model:Model,data: str or List[dict],k:int,min_p:float=0.5)->float:
         pass
 
     def get_data_at_hit_at_k_test_format(self,file_path: str)->list:

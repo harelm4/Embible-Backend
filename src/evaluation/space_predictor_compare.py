@@ -9,7 +9,7 @@ from src.space_predictor.space_baseline import space_baseline
 predictors=[space_baseline(),Iterative_space_predictor(),Recursive_space_predictor()]
 metrics=[space_precision(), space_recall()]
 mask_lst = [5, 10, 15]
-
+min_p=[i/10 for i in range(2,10)]
 
 def get_data_at_test_format(file_path: str) -> list:
     """
@@ -27,12 +27,23 @@ for mask in mask_lst:
     data = get_data_at_test_format(file)
     for predictor in predictors:
         for metric in metrics:
-            metric_res = metric.calculate(predictor,data)
-            toAdd={'predictor':predictor.__class__.__name__,'file':file,'metric':metric.__class__.__name__.split('_')[1],'score':metric_res}
-            results.append(toAdd)
-            print(toAdd)
-        res_df = pd.DataFrame(results)
-
-csv_location = '../../data/results/space-predictor-eval.csv'
-print(f'writing to {csv_location}')
-res_df.to_csv(csv_location)
+            if(predictor.__class__.__name__=="space_baseline"):
+                metric_res = metric.calculate(predictor,data,0)
+                toAdd={'predictor':predictor.__class__.__name__,'file':file,'metric':metric.__class__.__name__.split('_')[1],'score':metric_res}
+                results.append(toAdd)
+                print(toAdd)
+            else:
+                for p in min_p:
+                    metric_res = metric.calculate(predictor, data,p)
+                    toAdd = {'predictor': predictor.__class__.__name__,'min_p':p, 'file': file,
+                             'metric': metric.__class__.__name__.split('_')[1], 'score': metric_res}
+                    results.append(toAdd)
+                    print(toAdd)
+            res_df = pd.DataFrame(results)
+            csv_location = '../../data/results/space-predictor-eval.csv'
+            print(f'writing to {csv_location}')
+            res_df.to_csv(csv_location)
+#
+# csv_location = '../../data/results/space-predictor-eval.csv'
+# print(f'writing to {csv_location}')
+# res_df.to_csv(csv_location)
