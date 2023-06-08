@@ -14,18 +14,16 @@ class Iterative_space_predictor(space_predictor):
         :param text:input text full of ? that might be spaces
         :return text with certain spaces
         """
-
-        index_in_text=0
-        time_of_spaces=0
-        model_res=StandardModel(config.configs['char_model_path']).predict(text,threshold)
-        for index,text_part in enumerate(model_res.lst):
-            if(text_part.text!='?'):
-                index_in_text+=len(text_part.text)
-            else:
-                for prediction in text_part.predictions:
-                    if(prediction.score>threshold and prediction.value==""):
-                        text=text[:index_in_text] + " " + text[index_in_text+1:]
-                        index_in_text+=1
-                        model_res.lst.pop(index-time_of_spaces)
-                        time_of_spaces+=1
+        input_text=text
+        model_res=StandardModel(config.configs['char_model_path']).predict(text,threshold).get_only_predictions()
+        index_in_model_res = 0
+        for index, char in enumerate(text):
+            if (char == "?"):
+                text_part=model_res.lst[index_in_model_res]
+                if (len(text_part.predictions) > 0):
+                    for prediction in text_part.predictions:
+                        if (prediction.score > threshold and prediction.value == ""):
+                            text = text[:index] + " " + text[index + 1:]
+                index_in_model_res+=1
         return text
+
