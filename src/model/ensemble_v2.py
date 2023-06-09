@@ -39,6 +39,7 @@ class EnsembleV2(Model):
         self.counter=0
         if self.space_predictor:
             text = self.space_predictor.genText(text)
+            self.space_predictor_res=text
 
         char_model_result = self.char_model.predict(text, min_p)
         word_model_result = self.word_model.predict(text,min_p)

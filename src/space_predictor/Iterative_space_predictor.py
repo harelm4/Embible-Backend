@@ -18,14 +18,13 @@ class Iterative_space_predictor(space_predictor):
         index_in_text=0
         time_of_spaces=0
         model_res=StandardModel(config.configs['char_model_path']).predict(text,threshold)
+        print({k:v for k,v in enumerate(list(text))})
         for index,text_part in enumerate(model_res.lst):
-            if(text_part.text!='?'):
-                index_in_text+=len(text_part.text)
-            else:
+            if(text_part.text=='?'):
                 for prediction in text_part.predictions:
-                    if(prediction.score>threshold and prediction.value==""):
+                    if(prediction.score>threshold and prediction.value==" "):
                         text=text[:index_in_text] + " " + text[index_in_text+1:]
-                        index_in_text+=1
                         model_res.lst.pop(index-time_of_spaces)
                         time_of_spaces+=1
+            index_in_text += len(text_part.text)
         return text

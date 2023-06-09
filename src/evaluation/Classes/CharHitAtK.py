@@ -17,7 +17,7 @@ from src.space_predictor.Iterative_space_predictor import Iterative_space_predic
 class CharHitAtK(HitAtK):
     def __init__(self):
         self.lop=[]
-    def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=None, space_predictor: space_predictor=Iterative_space_predictor) -> float:
+    def calculate(self, model: Model, data: str or List[dict], k: int,char_weight:float=0.5) -> float:
         """
         ** this hit@k works only for same word length models **
         calculate hit@k score for chars.
@@ -33,7 +33,9 @@ class CharHitAtK(HitAtK):
         progress_bar = tqdm(range(len(data)), desc=f"{model.model_path} Char Hit@{k}", unit="entry",
                             bar_format="\033[32m{l_bar}{bar}{r_bar}\033[0m")
         empty_masks=0
+        data=data[45:]
         for entry_idx, entry in enumerate(data):
+            real_space_value_count=0
             progress_bar.update(1)
             current_text=entry['text']
             real_values = list(entry['missing'].values())
@@ -43,6 +45,24 @@ class CharHitAtK(HitAtK):
 
             if char_weight is not None and isinstance(model, EnsembleV2):
                 modelRes = model.predict(current_text,char_model_weight=char_weight).get_only_k_predictions(k)
+                space_predictor_res=model.space_predictor_res
+                real_values_no_spaces=[]
+                for idx,real_char in entry['missing'].items():
+                    if real_char==' ':
+                        real_space_value_count+=1
+                        if  space_predictor_res[int(idx)]==' ':
+                            fit_count += 1
+
+                    else:
+                        if  space_predictor_res[int(idx)]==' ':
+                            sp_res_lst=list(space_predictor_res)
+                            sp_res_lst[int(idx)]='?'
+                            space_predictor_res=''.join(sp_res_lst)
+                        real_values_no_spaces.append(real_char)
+                real_values=real_values_no_spaces
+                current_text=space_predictor_res
+                    
+
             else:
                 modelRes = model.predict(current_text).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
@@ -55,6 +75,7 @@ class CharHitAtK(HitAtK):
 
                 for j in missing_idxs:
                     pred_missing_chars = []
+
                     for w in preds:
                             pred_missing_chars.append(w[j])
                     char_lst.append(pred_missing_chars)
@@ -65,7 +86,7 @@ class CharHitAtK(HitAtK):
                 if real_val in char_lst[real_val_idx]:
                     fit_count += 1
             if len(real_values):
-                results.append(fit_count / len(real_values))
+                results.append(fit_count / (real_space_value_count + len(real_values)))
             else:
                 results.append(0)
 
