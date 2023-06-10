@@ -45,19 +45,34 @@ class MRR_WORDS(HitAtK):
         amount_of_masking=0
         for entry_idx, entry in enumerate(data):
             real_values = entry['missing']
-            indeces_of_missing_words=[i for i in range(len(entry["text"].split())) if any(c=="?" for c in entry["text"].split()[i])]
-            modelRes = model.predict(entry['text']).get_prediction_sorted()
-            recreated_text=self.recreate_text(entry['text'],entry['missing'])
-            masked_words=[recreated_text.split()[word] for word in range(len(recreated_text)) if word in indeces_of_missing_words]
+            text = entry['text']
+            modelRes = model.predict(text).get_prediction_sorted()
+            after_sp_text = model.text
+            indeces_of_missing_words = [i for i in range(len(after_sp_text.split())) if
+                                        any(c == "?" for c in after_sp_text.split()[i])]
+            miss, hit = self._comp_after_sp_texts(after_sp_text, real_values)
+            recreated_text = self.recreate_text(after_sp_text, miss)
+            masked_words = [recreated_text.split()[word] for word in range(len(recreated_text))
+                            if word in indeces_of_missing_words]
             list_of_preds,list_dicts_pred_rank = self._model_result_to_list_of_preds(modelRes)
-            mone=0
-            mechane=len(list_of_preds)
-            for index,preds in  enumerate(list_of_preds):
+            mone = hit
+            mechane = len(list_of_preds)
+            for index, preds in enumerate(list_of_preds):
                 if masked_words[index] in preds:
-                    mone+= 1/list_dicts_pred_rank[index][masked_words[index]]
-            amount_of_masking+=mechane
-            total_score+=mone
+                    mone += 1/list_dicts_pred_rank[index][masked_words[index]]
+            amount_of_masking += mechane
+            total_score += mone
         return total_score/amount_of_masking
+
+    def _comp_after_sp_texts(self, after_sp_text: str, miss_dict: dict):
+        hit = 0
+        for k, v in miss_dict.copy().items():
+            if v == ' ' and after_sp_text[int(k)] == ' ':
+                del miss_dict[k]
+                hit += 1
+            elif after_sp_text[int(k)] == ' ' and v != ' ':
+                del miss_dict[k]
+        return miss_dict, hit
 
     def _model_result_to_list_of_preds(self, modelRes: ModelResult) -> List[List[str]]:
         """
