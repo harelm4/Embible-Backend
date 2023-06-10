@@ -23,6 +23,8 @@ class EnsembleV2(Model):
         self.pred_avg_lens=[]
         self.pres=[]
         self.intersection_pred_avg_lens=[]
+        self.text = ''
+
 
     def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.5) -> ModelResult:
         """
@@ -38,10 +40,12 @@ class EnsembleV2(Model):
         """
         self.counter=0
         if self.space_predictor:
-            text = self.space_predictor.genText(text)
+            self.text = self.space_predictor.genText(text)
+        else:
+            self.text = text
 
-        char_model_result = self.char_model.predict(text, min_p)
-        word_model_result = self.word_model.predict(text,min_p)
+        char_model_result = self.char_model.predict(self.text, min_p)
+        word_model_result = self.word_model.predict(self.text,min_p)
 
         if len(char_model_result) != len(word_model_result):
             raise Exception(

@@ -31,24 +31,40 @@ class WordHitAtK(HitAtK):
 
         progress_bar = tqdm(range(len(data)), desc=f"{model.model_path} Word Hit@{k}", unit="entry",
                             bar_format="\033[32m{l_bar}{bar}{r_bar}\033[0m")
-        total_score=0
-        amount_of_masking=0
+        total_score = 0
+        amount_of_masking = 0
         for entry_idx, entry in enumerate(data):
             progress_bar.update(1)
-            indeces_of_missing_words=[i for i in range(len(entry["text"].split())) if any(c=="?" for c in entry["text"].split()[i])]
-            modelRes = model.predict(entry['text']).get_only_k_predictions(k)
-            recreated_text=self.recreate_text(entry['text'],entry['missing'])
-            masked_words=[recreated_text.split()[word] for word in range(len(recreated_text)) if word in indeces_of_missing_words]
+            text = entry['text']
+            real_values = list(entry['missing'].values())
+            modelRes = model.predict(text).get_only_k_predictions(k)
+            after_sp_text = model.text
+            indeces_of_missing_words = [i for i in range(len(after_sp_text.split())) if any(c == "?" for c in
+                                                                                            after_sp_text.split()[i])]
+            miss, hit = self._comp_after_sp_texts(after_sp_text, entry['missing'])
+            recreated_text = self.recreate_text(after_sp_text, miss)
+            masked_words = [recreated_text.split()[word] for word in range(len(recreated_text)) if
+                            word in indeces_of_missing_words]
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
 
-            mone=0
-            mechane=len(list_of_preds)
-            for index,preds in  enumerate(list_of_preds):
+            mone = hit
+            mechane = len(list_of_preds)
+            for index, preds in enumerate(list_of_preds):
                 if masked_words[index] in preds:
-                    mone+=1
-            amount_of_masking+=mechane
-            total_score+=mone
-        return total_score/amount_of_masking
+                    mone += 1
+            amount_of_masking += mechane
+            total_score += mone
+        return total_score / amount_of_masking
+
+    def _comp_after_sp_texts(self, after_sp_text: str, miss_dict: dict):
+        hit = 0
+        for k, v in miss_dict.copy().items():
+            if v == ' ' and after_sp_text[int(k)] == ' ':
+                del miss_dict[k]
+                hit += 1
+            elif after_sp_text[int(k)] == ' ' and v != ' ':
+                del miss_dict[k]
+        return miss_dict, hit
 
     def _model_result_to_list_of_preds(self, modelRes: ModelResult) -> List[List[str]]:
         """
@@ -64,9 +80,8 @@ class WordHitAtK(HitAtK):
             res.append(preds)
         return res
 
-    def recreate_text(self,text:str,missing:dict):
-        new_text=text
-        for key,value in missing.items():
-            new_text=new_text[:int(key)]+value+new_text[int(key)+1:]
+    def recreate_text(self, text: str, missing: dict):
+        new_text = text
+        for key, value in missing.items():
+            new_text = new_text[:int(key)] + value + new_text[int(key) + 1:]
         return new_text
-
