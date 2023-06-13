@@ -7,7 +7,7 @@ from src.space_predictor.space_predictor import space_predictor
 
 class space_recall():
 
-    def calculate(self,predictor:space_predictor,data: str or List[dict])->float:
+    def calculate(self,predictor:space_predictor,data: str or List[dict],min_p:float)->float:
         if isinstance(data, str):
             data = self.get_data_at_test_format(data)
         tp=0
@@ -23,7 +23,7 @@ class space_recall():
             if len(missing_spaces.items())==0:
                 tp+=1
                 continue
-            res_text = predictor.genText(text)
+            res_text = predictor.genText(text,min_p)
             for i,_ in missing_spaces.items():
                 if res_text[int(i)]==' ':
                     tp+=1
