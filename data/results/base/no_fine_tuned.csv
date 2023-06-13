@@ -1,0 +1,13 @@
+,k,model,hit@k,file,time
+0,1,tau/tavbert-he,0.3296969696969697,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.5153982639312744
+1,1,distilbert-base-uncased,0.0,../../data/Hit@K/masked MIX char tokens/mix_5.json,0.7350683450698853
+2,1,dicta-il/alephbertgimmel-base,0.10242424242424242,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.1469322760899863
+3,1,bert-base-multilingual-cased,0.01696969696969697,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.3279435992240907
+4,1,tau/tavbert-he,0.22853087295954577,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.5946710109710693
+5,1,distilbert-base-uncased,0.0,../../data/Hit@K/masked MIX char tokens/mix_10.json,0.7298626025517782
+6,1,dicta-il/alephbertgimmel-base,0.04719659332860184,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.2301887075106304
+7,1,bert-base-multilingual-cased,0.0099361249112846,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.3340139389038086
+8,1,tau/tavbert-he,0.17120836774015966,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.6891590793927511
+9,1,distilbert-base-uncased,0.0,../../data/Hit@K/masked MIX char tokens/mix_15.json,0.6775964895884196
+10,1,dicta-il/alephbertgimmel-base,0.012386457473162676,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.2952407201131184
+11,1,bert-base-multilingual-cased,0.004404073768235618,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.3306823690732321

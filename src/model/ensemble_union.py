@@ -21,10 +21,12 @@ from src.model.Char_model import CharModel
 
 
 class EnsembleUnion(EnsembleV2):
-    def __init__(self):
+    def __init__(self,space_predictor=None):
+        super(EnsembleUnion,self).__init__(space_predictor)
         self.model_path = 'EnsembleUnion'
         self.char_model = CharModel(config.configs['char_model_path'])
         self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
+
 
     def merge_textparts(self, char_textpart: TextPart, word_textpart: TextPart, char_model_weight: float) -> TextPart:
         """
