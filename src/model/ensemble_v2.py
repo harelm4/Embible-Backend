@@ -26,7 +26,7 @@ class EnsembleV2(Model):
         self.text = ''
 
 
-    def predict(self, text: str, min_p: float = 0.00001, char_model_weight: float = 0.5) -> ModelResult:
+    def predict(self, text: str, min_p: float = 0, char_model_weight: float = 0.5) -> ModelResult:
         """
         predicting based on word model and char model
         :param text: the text to predict , for example "אני ???? שוקולד וע?גות גבינה"
