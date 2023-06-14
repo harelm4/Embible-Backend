@@ -1,0 +1,18 @@
+,k,model,hit@k,file,time
+0,5,Embible/AlephBertGimmel-10-epochs,0.4274748938321715,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.8466253280639648
+1,5,Embible/AlephBertGimmel-20-epochs,0.42851646637965396,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.8571051597595215
+2,5,Embible/AlephBertGimmel-50-epochs,0.42970075199568836,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.8910911917686463
+3,5,Embible/mBert-10-epochs,0.26040355084953265,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.9254332304000854
+4,5,Embible/mBert-20-epochs,0.24690506540050197,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.9068190097808838
+5,5,Embible/mBert-50-epochs,0.25595342515847835,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.9360833406448364
+6,5,Embible/distilBert-10-epochs,0.2195792205260612,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.734926184018453
+7,5,Embible/distilBert-20-epochs,0.2653581273512084,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.7341841777165731
+8,5,Embible/distilBert-50-epochs,0.26709683679732543,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,0.7319888989130656
+9,5,Embible/AlephBertGimmel-10-epochs,0.6772287738930324,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.939660370349884
+10,5,Embible/AlephBertGimmel-20-epochs,0.6793596212875874,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.9208337068557739
+11,5,Embible/AlephBertGimmel-50-epochs,0.6702592545751379,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.8636446396509806
+12,5,Embible/mBert-10-epochs,0.4084416432103002,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.919168214003245
+13,5,Embible/mBert-20-epochs,0.4019357506691681,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.923152228196462
+14,5,Embible/mBert-50-epochs,0.4134794853600981,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.9608089208602906
+15,5,Embible/distilBert-10-epochs,0.32606980884222886,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.8137070735295614
+16,5,Embible/distilBert-20-epochs,0.4209848272334263,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,0.8477150917053222
