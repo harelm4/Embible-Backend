@@ -1,0 +1,13 @@
+,k,model,hit@k,file,time
+0,1,Embible/AlephBertGimmel-20-epochs,0.1618181818181818,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.1482211073239645
+1,1,Embible/mBert-20-epochs,0.04787878787878788,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.21698663632075
+2,1,Embible/distilBert-20-epochs,0.056363636363636366,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.0123400727907816
+3,1,Embible/tavbert-20-epochs,0.35818181818181816,../../data/Hit@K/masked MIX char tokens/mix_5.json,1.6213245034217834
+4,1,Embible/AlephBertGimmel-20-epochs,0.10184528034066714,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.40463578303655
+5,1,Embible/mBert-20-epochs,0.032292405961674944,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.303312595685323
+6,1,Embible/distilBert-20-epochs,0.0361958836053939,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.089011271794637
+7,1,Embible/tavbert-20-epochs,0.25691980127750175,../../data/Hit@K/masked MIX char tokens/mix_10.json,1.6244942943255107
+8,1,Embible/AlephBertGimmel-20-epochs,0.0611065235342692,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.512111242612203
+9,1,Embible/mBert-20-epochs,0.015414258188824663,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.4718978762626649
+10,1,Embible/distilBert-20-epochs,0.018717313515001378,../../data/Hit@K/masked MIX char tokens/mix_15.json,1.170832137266795
+11,1,Embible/tavbert-20-epochs,0.2086429947701624,../../data/Hit@K/masked MIX char tokens/mix_15.json,2.0110552032788593
