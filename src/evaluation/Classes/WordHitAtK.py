@@ -38,7 +38,10 @@ class WordHitAtK(HitAtK):
             text = entry['text']
             real_values = list(entry['missing'].values())
             modelRes = model.predict(text).get_only_k_predictions(k)
-            after_sp_text = model.text
+            if hasattr(model, 'space_predictor') and model.space_predictor:
+                after_sp_text = model.text
+            else:
+                after_sp_text = text
             indeces_of_missing_words = [i for i in range(len(after_sp_text.split())) if any(c == "?" for c in
                                                                                             after_sp_text.split()[i])]
             miss, hit = self._comp_after_sp_texts(after_sp_text, entry['missing'])
