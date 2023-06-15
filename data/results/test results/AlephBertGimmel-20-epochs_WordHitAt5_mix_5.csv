@@ -1,0 +1,12 @@
+,k,model,hit@k,file,time
+0,5,Embible/AlephBertGimmel-10-epochs,0.2735091743119266,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.2580915729204813
+1,5,Embible/AlephBertGimmel-20-epochs,0.2786697247706422,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.2786850730578105
+2,5,Embible/AlephBertGimmel-50-epochs,0.2672018348623853,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.2755025148391723
+3,5,Embible/mBert-10-epochs,0.10493119266055045,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.3833796381950378
+4,5,Embible/mBert-20-epochs,0.0911697247706422,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.3712637424468994
+5,5,Embible/mBert-50-epochs,0.09403669724770643,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.3963553269704183
+6,5,Embible/distilBert-10-epochs,0.04988532110091743,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.0812773823738098
+7,5,Embible/distilBert-20-epochs,0.10779816513761468,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.087754746278127
+8,5,Embible/distilBert-50-epochs,0.11467889908256881,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_5.json,1.086366093158722
+9,5,Embible/AlephBertGimmel-10-epochs,0.4241126070991432,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,1.2785449028015137
+10,5,Embible/AlephBertGimmel-20-epochs,0.43329253365973075,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_5.json,1.2668047149976094

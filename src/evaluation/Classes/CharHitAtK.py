@@ -49,7 +49,10 @@ class CharHitAtK(HitAtK):
             else:
                 modelRes = model.predict(text).get_only_k_predictions(k)
             list_of_preds = self._model_result_to_list_of_preds(modelRes)
-            after_sp_text = model.text
+            if hasattr(model, 'space_predictor') and model.space_predictor:
+                after_sp_text = model.text
+            else:
+                after_sp_text = text
             miss, hit = self._comp_after_sp_texts(after_sp_text, entry['missing'])
             real_values = list(miss.values())
             char_lst = []
@@ -79,7 +82,6 @@ class CharHitAtK(HitAtK):
         for k, v in miss_dict.copy().items():
             if v == ' ' and after_sp_text[int(k)] == ' ':
                 del miss_dict[k]
-                hit += 1
             elif after_sp_text[int(k)] == ' ' and v != ' ':
                 del miss_dict[k]
         return miss_dict, hit
