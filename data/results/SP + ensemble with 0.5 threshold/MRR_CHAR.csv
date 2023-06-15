@@ -1,0 +1,10 @@
+,model,hit@k,file,time
+0,EnsembleV2_iterative_sp,0.7664560697547776,../../data/Hit@K/masked MIX char tokens/mix_5.json,61.678966053326924
+1,EnsembleV2_recurrent_sp,0.7664560697547776,../../data/Hit@K/masked MIX char tokens/mix_5.json,68.84042576948802
+2,EnsembleV2_baseline_sp,0.5109061485560739,../../data/Hit@K/masked MIX char tokens/mix_5.json,8.025080076853435
+3,EnsembleV2_iterative_sp,0.6935312789429864,../../data/Hit@K/masked MIX char tokens/mix_10.json,25.69340304931005
+4,EnsembleV2_recurrent_sp,0.694221862432059,../../data/Hit@K/masked MIX char tokens/mix_10.json,36.35930198431015
+5,EnsembleV2_baseline_sp,0.3685228738270062,../../data/Hit@K/masked MIX char tokens/mix_10.json,9.08065044482549
+6,EnsembleV2_iterative_sp,0.60213500518523,../../data/Hit@K/masked MIX char tokens/mix_15.json,27.594435195128124
+7,EnsembleV2_recurrent_sp,0.6054691496563368,../../data/Hit@K/masked MIX char tokens/mix_15.json,43.730393830935164
+8,EnsembleV2_baseline_sp,0.32676011789286125,../../data/Hit@K/masked MIX char tokens/mix_15.json,11.605684300263723

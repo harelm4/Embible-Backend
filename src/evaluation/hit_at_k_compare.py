@@ -54,13 +54,13 @@ def getModel(baseline: int or str, model: str) -> Model:
 def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]):
     results = []
     for i, mask_precent in enumerate([5, 10, 15]):
-        # "C:\Users\Niv Fono\PycharmProjects\Embible-Backend\data\Hit@K\mixed real test dfs No spaces"
-        #mix_file = f'../../data/Hit@K/masked MIX char tokens/mix_{data_masked2[i]}.json'
-        # "data/Hit@K/masked MIX char tokens/mix_5.json"
+        # "C:\Users\Niv Fono\PycharmProjects\Embible-Backend\data\Hit@K\mixed test dfs known spaces"
+        #mix_file = f'../../data/Hit@K/mixed validation df masked spaces/mix_{data_masked2[i]}.json'
+        # "data/Hit@K/mixed validation df masked spaces/MIX_validation_df_masked_spaces_5.json"
         # "C:\Users\Niv Fono\PycharmProjects\Embible-Backend\data\Hit@K\no masked spaces char tokens\5.json"
         mix_file_W_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_{mask_precent}.json'
         mix_file_No_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_{mask_precent}.json'
-        #mix_file_W_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/masked MIX char tokens/mix_{mask_precent}.json'
+        #mix_file_W_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed validation df masked spaces/mix_{mask_precent}.json'
         #mix_file_No_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/no masked spaces char tokens/{mask_precent}.json'
 
         files = [mix_file_W_spaces,mix_file_No_spaces]
