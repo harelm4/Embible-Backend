@@ -1,0 +1,3 @@
+,k,model,hit@k,file,time
+0,1,Embible/AlephBertGimmel-10-epochs,0.253125,../../data/Hit@K/mixed validetion dfs known spaces new P/MIX_validation_df_known_spaces_5_percent.json,1.2583675702412924
+1,1,Embible/AlephBertGimmel-20-epochs,0.2625,../../data/Hit@K/mixed validetion dfs known spaces new P/MIX_validation_df_known_spaces_5_percent.json,1.1078133662541707
