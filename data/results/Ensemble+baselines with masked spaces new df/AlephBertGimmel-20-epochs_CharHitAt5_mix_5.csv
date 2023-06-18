@@ -1,0 +1,12 @@
+,k,model,hit@k,file,time
+0,5,Embible/AlephBertGimmel-10-epochs,0.5865200994774873,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,0.9547929962476095
+1,5,Embible/AlephBertGimmel-20-epochs,0.5900289218955265,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,0.9524976531664531
+2,5,Embible/AlephBertGimmel-50-epochs,0.5872715039922078,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,0.9549358646074931
+3,5,Embible/mBert-10-epochs,0.3700264204085421,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,1.0254778623580934
+4,5,Embible/mBert-20-epochs,0.36100681907768545,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,1.0241993109385172
+5,5,Embible/mBert-50-epochs,0.3728952561513935,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,1.0402714252471923
+6,5,Embible/distilBert-10-epochs,0.3116949246523124,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,1.0934520641962686
+7,5,Embible/distilBert-20-epochs,0.36525853077497394,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,0.9246042251586915
+8,5,Embible/distilBert-50-epochs,0.36665098021049897,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,1.1588279962539674
+9,5,Embible/AlephBertGimmel-10-epochs,0.542966848925398,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_5_percent.json,1.5998844544092814
+10,5,Embible/AlephBertGimmel-20-epochs,0.5582420098611809,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_5_percent.json,1.4149929801623027

@@ -1,0 +1,7 @@
+,k,model,hit@k,file,time
+0,5,EnsembleV2,0.6900094433211613,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,8.788911747932435
+1,5,EnsembleV2,0.6955575296896541,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_5_percent.json,8.423677039146423
+2,5,EnsembleV2,0.43548798637553005,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_10_percent.json,14.191344849268596
+3,5,EnsembleV2,0.45161884089483656,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_10_percent.json,14.360886557896931
+4,5,EnsembleV2,0.35922745973558945,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_15_percent.json,23.10975822607676
+5,5,EnsembleV2,0.36520688176995403,C:/Users/ELDAR/PycharmProjects/Embible-Backend4/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_15_percent.json,92.00659911632538
