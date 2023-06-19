@@ -1,0 +1,4 @@
+,k,model,hit@k,file,time
+0,5,EnsembleV2,0.9308745532410218,../../data/Hit@K/mixed validetion dfs known spaces new P/MIX_validation_df_known_spaces_5_percent.json,5.904290286699931
+1,5,EnsembleV2,0.7086817074980604,../../data/Hit@K/mixed validetion dfs known spaces new P/MIX_validation_df_known_spaces_10_percent.json,10.648989748954772
+2,5,EnsembleV2,0.6322291165369466,../../data/Hit@K/mixed validetion dfs known spaces new P/MIX_validation_df_known_spaces_15_percent.json,11.299294845263164

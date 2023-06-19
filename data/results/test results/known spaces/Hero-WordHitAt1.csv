@@ -1,0 +1,4 @@
+,k,model,hit@k,file,time
+0,1,EnsembleV2,0.6154639175257732,../../data/Hit@K/mixed test dfs known spaces new P/MIX_test_df_known_spaces_5_percent.json,5.035382262865702
+1,1,EnsembleV2,0.5976154992548435,../../data/Hit@K/mixed test dfs known spaces new P/MIX_test_df_known_spaces_10_percent.json,8.451487167676289
+2,1,EnsembleV2,0.5744295545092358,../../data/Hit@K/mixed test dfs known spaces new P/MIX_test_df_known_spaces_15_percent.json,9.46964399019877
