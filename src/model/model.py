@@ -8,7 +8,8 @@ from src.classes.text_part import TextPart
 
 
 class Model(ABC):
-    def __init__(self,model_path):
+    def __init__(self,model_path,mask_token='[MASK]'):
+        self.mask_token=mask_token
         self.model_path=model_path
         self.model=AutoModelForMaskedLM.from_pretrained(model_path)
         self.tokenizer=AutoTokenizer.from_pretrained(model_path)

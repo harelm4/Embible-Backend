@@ -11,8 +11,8 @@ from src.utils.strings import StringUtils
 
 
 class SameLengthAndCharsWordModel(SameLengthWordModel):
-    def __init__(self,model_path):
-        super(SameLengthAndCharsWordModel,self).__init__(model_path)
+    def __init__(self,model_path,mask_token='[MASK]'):
+        super(SameLengthAndCharsWordModel,self).__init__(model_path,mask_token)
         self._topk_predictions_raw=10000
         
     def predict(self, text: str, min_p: float = 0.00):
