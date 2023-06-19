@@ -20,8 +20,7 @@ login(config.configs['hf_token'])
 epochs = [10, 20, 50]
 data_masked1 = [15, 25, 30]
 data_masked2 = [5, 15, 25,30]
-sp=Iterative_space_predictor()
-ensemble = EnsembleV2(space_predictor=sp)
+ensemble = EnsembleV2()
 word_models = ['AlephBertGimmel', 'mBert', 'distilBert']
 
 
@@ -34,12 +33,8 @@ def hit_at_k_eval(model: Model, file: str, k: int, hit_at_k_strategy: HitAtK, re
     t = (t2 - t1) / 60
     print(f'time: {t} minutes')
     results.append({'k': k, 'model': model.model_path, 'hit@k': res, 'file': file, 'time': t})
-    res_df = pd.DataFrame(results)
-    model.model_path =  model.model_path.replace("Embible/", "")
-    csv_location = '../../data/results/test results/' + f'{model.model_path}_' \
-                                                      f'{hit_at_k_strategy.__class__.__name__[:-1]}{k}_mix_{mask}.csv'
-    print(f'writing to {csv_location}')
-    res_df.to_csv(csv_location)
+
+
 
 
 def getModel(baseline: int or str, model: str) -> Model:
@@ -54,45 +49,28 @@ def getModel(baseline: int or str, model: str) -> Model:
 def hit_at_k(baseline: str, k: int, hit_at_k_strategy: HitAtK, models: List[str]):
     results = []
     for i, mask_precent in enumerate([5, 10, 15]):
-        # "C:\Users\Niv Fono\PycharmProjects\Embible-Backend\data\Hit@K\mixed test dfs known spaces"
-        #mix_file = f'../../data/Hit@K/mixed validation df masked spaces/mix_{data_masked2[i]}.json'
-        # "data/Hit@K/mixed validation df masked spaces/MIX_validation_df_masked_spaces_5.json"
-        # "C:\Users\Niv Fono\PycharmProjects\Embible-Backend\data\Hit@K\no masked spaces char tokens\5.json"
-        mix_file_W_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs W spaces/MIX_test_df_{mask_precent}.json'
-        mix_file_No_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed real test dfs No spaces/MIX_test_df_no_spaces_{mask_precent}.json'
-        #mix_file_W_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed validation df masked spaces/mix_{mask_precent}.json'
-        #mix_file_No_spaces = f'C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/no masked spaces char tokens/{mask_precent}.json'
-
-        files = [mix_file_W_spaces,mix_file_No_spaces]
-        for file in files:
-            for model_name in models:
-                if baseline == 'ensemble':
-                        model = ensemble
-                        if(file==mix_file_No_spaces):
-                            model.space_predictor=None
-                        else:
-                            model.space_predictor=sp
-
-                        hit_at_k_eval(model, file, k, hit_at_k_strategy,results,mask_precent)
-                else:
-                    for epoch in epochs:
-                        model = getModel(baseline, f'Embible/{model_name}-{epoch}-epochs')
-                        hit_at_k_eval(model, file, k, hit_at_k_strategy,results,mask_precent)
+        file=f'../../data/Hit@K/mixed test dfs known spaces new P/MIX_test_df_known_spaces_{mask_precent}_percent.json'
+        for model_name in models:
+            if baseline == 'ensemble':
+                    model = ensemble
+                    hit_at_k_eval(model, file, k, hit_at_k_strategy,results,mask_precent)
+            else:
+                for epoch in epochs:
+                    model = getModel(baseline, f'Embible/{model_name}-{epoch}-epochs')
+                    hit_at_k_eval(model, file, k, hit_at_k_strategy,results,mask_precent)
 
 
         res_df = pd.DataFrame(results)
-        csv_location = '../../data/results/test results/' + f'{baseline}-{hit_at_k_strategy.__class__.__name__[:-1]}{k} NoHIT+1.csv'
+        csv_location = '../../data/results/test results/known spaces/' + f'{baseline}-{hit_at_k_strategy.__class__.__name__[:-1]}{k}.csv'
         print(f'writing to {csv_location}')
         res_df.to_csv(csv_location)
 
 
-# for k in [1, 5]:
-#     for strategy in [char_hit_at_k, word_hit_at_k]:
-#     # for strategy in [word_hit_at_k]:
-#         hit_at_k('ensemble',k, strategy,['ensemble'])
-
-word_models = ['AlephBertGimmel', 'mBert', 'distilBert']
-
-for k in [1,5]:
-    for i,strategy in enumerate([char_hit_at_k]):
+for k in [1, 5]:
+    hit_at_k('baseline1', k, word_hit_at_k, word_models)
+    for strategy in [char_hit_at_k, word_hit_at_k]:
+        hit_at_k('baseline2',k, strategy,word_models)
         hit_at_k('ensemble',k, strategy,['ensemble'])
+
+
+

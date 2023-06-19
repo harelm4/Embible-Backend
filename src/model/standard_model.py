@@ -28,7 +28,7 @@ class StandardModel(Model):
         return ModelResult(res)
 
     def _get_predictions(self,text):
-        text=StringUtils.insert_masks(text)
+        text=StringUtils.insert_masks(text,self.mask_token)
         # tokenize input
         token_ids = self.tokenizer.encode(text, return_tensors='pt')
         # masked token indexes

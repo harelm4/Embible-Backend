@@ -5,12 +5,12 @@ from typing import List
 class StringUtils():
 
     @staticmethod
-    def  insert_masks(text:str)->str:
+    def  insert_masks(text:str,mask_token:str)->str:
         res = ''
         for letter in text:
             add = ''
             if letter == '?':
-                add = '[MASK]'
+                add = mask_token
             else:
                 add = letter
             res += add
