@@ -1,0 +1,7 @@
+,k,model,hit@k,file,time
+0,1,EnsembleV2,0.7132957320457323,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_5_percent.json,25.211359004179638
+1,1,EnsembleV2,0.7584191449576065,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed test dfs known spaces new P/MIX_test_df_known_spaces_5_percent.json,5.567287580172221
+2,1,EnsembleV2,0.4380544319068908,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_10_percent.json,57.53201842705409
+3,1,EnsembleV2,0.557190866335191,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed test dfs known spaces new P/MIX_test_df_known_spaces_10_percent.json,13.567693102359772
+4,1,EnsembleV2,0.33916957050052393,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed test dfs masked spaces new P/MIX_test_df_masked_spaces_15_percent.json,43.9791424592336
+5,1,EnsembleV2,0.5107895814090289,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed test dfs known spaces new P/MIX_test_df_known_spaces_15_percent.json,25.26433930397034
