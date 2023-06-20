@@ -1,0 +1,4 @@
+,k,model,hit@k,file,time
+0,1,EnsembleV2,0.715377857813016,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_5_percent.json,26.76985337336858
+1,1,EnsembleV2,0.4274465911157544,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_10_percent.json,31.457700181007386
+2,1,EnsembleV2,0.34403582437129027,C:/Users/Niv Fono/PycharmProjects/Embible-Backend/data/Hit@K/mixed validetion dfs masked spaces new P/MIX_val_df_masked_spaces_15_percent.json,34.52929528156916
