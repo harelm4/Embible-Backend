@@ -16,7 +16,7 @@ class EnsembleV2(Model):
     def __init__(self,space_predictor=None):
         self.model_path = 'EnsembleV2'
         self.char_model = CharModel(config.configs['char_model_path'])
-        self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'],'<mask>')
+        self.word_model = SameLengthAndCharsWordModel(config.configs['word_model_path'])
         self.space_predictor=space_predictor
 
         self.counter=0
